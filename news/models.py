@@ -32,7 +32,7 @@ class Post(models.Model):
     # Эта модель должна содержать в себе статьи и новости, которые создают пользователи.
     # Каждый объект может иметь одну или несколько категорий.
     author = models.ForeignKey(Author, on_delete=models.CASCADE) # связь «один ко многим» с моделью Author;
-    position = models.CharField(choices=POSITION) # поле с выбором — «статья» или «новость»;
+    position = models.CharField(max_length=255, choices=POSITION) # поле с выбором — «статья» или «новость»;
     time_in = models.DateTimeField(auto_now_add=True) # автоматически добавляемая дата и время создания;
     category = models.ManyToManyField(Category, through='PostCategory') # связь «многие ко многим» с моделью Category (с дополнительной моделью PostCategory);
     article = models.CharField(max_length=255)  # заголовок статьи/новости;
