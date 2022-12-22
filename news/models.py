@@ -1,35 +1,32 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 
 class Author(models.Model):
-    pass
-
 # Модель, содержащая объекты всех авторов.
-# Имеет следующие поля:
-# cвязь «один к одному» с встроенной моделью пользователей User;
-# рейтинг пользователя. Ниже будет дано описание того, как этот рейтинг можно посчитать.
+    user = models.OneToOneField(User, on_delete=models.CASCADE)# cвязь «один к одному» с встроенной моделью пользователей User;
+    rating = models.FloatField(default=0.0)# рейтинг пользователя. Ниже будет дано описание того, как этот рейтинг можно посчитать.
 
     def update_rating(self):
         pass
 
 class Category(models.Model):
-    pass
-# Категории новостей/статей — темы, которые они отражают (спорт, политика, образование и т. д.).
-# Имеет единственное поле: название категории. Поле должно быть уникальным (в определении поля необходимо написать параметр unique = True)
+    category_name = models.CharField(max_length=255, unique=True)
+
+POSITION = (
+    ('PO', 'Post'),
+    ('NE', 'News')
 
 class Post(models.Model):
-    pass
 # Эта модель должна содержать в себе статьи и новости, которые создают пользователи. Каждый объект может иметь одну или несколько категорий.
-# Соответственно, модель должна включать следующие поля:
-# связь «один ко многим» с моделью Author;
-# поле с выбором — «статья» или «новость»;
-# автоматически добавляемая дата и время создания;
-# связь «многие ко многим» с моделью Category (с дополнительной моделью PostCategory);
-# заголовок статьи/новости;
-# текст статьи/новости;
-# рейтинг статьи/новости.
+    author = models.ForeignKey(Author, on_delete=models.CASCADE) # связь «один ко многим» с моделью Author;
+    position = models.CharField(choices=POSITION)# поле с выбором — «статья» или «новость»;
+    time_in = models.DateTimeField(auto_now_add=True)# автоматически добавляемая дата и время создания;
+    category = models.ManyToManyField(Category, through='PostCategory') # связь «многие ко многим» с моделью Category (с дополнительной моделью PostCategory);
+    article = models.CharField(max_length=255)# заголовок статьи/новости;
+    text = models.TextField() # текст статьи/новости;
+    rating = models.FloatField(default=0.0)# рейтинг статьи/новости.
 
     def like(self):
         pass
@@ -43,19 +40,17 @@ class Post(models.Model):
 class PostCategory(models.Model):
     pass
 # Промежуточная модель для связи «многие ко многим»:
-# связь «один ко многим» с моделью Post;
-# связь «один ко многим» с моделью Category.
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)# связь «один ко многим» с моделью Post;
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)# связь «один ко многим» с моделью Category.
 
 class Comment(models.Model):
-    pass
-
 # Под каждой новостью/статьёй можно оставлять комментарии, поэтому необходимо организовать их способ хранения тоже.
-# Модель будет иметь следующие поля:
-# связь «один ко многим» с моделью Post;
-# связь «один ко многим» со встроенной моделью User (комментарии может оставить любой пользователь, необязательно автор);
-# текст комментария;
-# дата и время создания комментария;
-# рейтинг комментария.
+
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)# связь «один ко многим» с моделью Post;
+    user = models.ForeignKey(User, on_delete=models.CASCADE)# связь «один ко многим» со встроенной моделью User (комментарии может оставить любой пользователь, необязательно автор);
+    text = models.CharField(max_length=255)# текст комментария;
+    time_in = models.DateTimeField(auto_now_add=True)# дата и время создания комментария;
+    rating = models.FloatField(default=0.0)# рейтинг комментария.
 
     def like(self):
         pass
