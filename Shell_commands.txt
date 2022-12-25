@@ -5,3 +5,19 @@ User.objects.create_user('User2')
 
 Author.objects.create(user=User.objects.get(pk=1))
 Author.objects.create(user=User.objects.get(pk=2))
+
+Category.objects.create(name='North')
+Category.objects.create(name='East')
+Category.objects.create(name='South')
+Category.objects.create(name='West')
+
+Post.objects.create(author=Author(pk=1), position='PO', article='North wind', text='some text')
+Post.objects.create(author=Author(pk=2), position='PO', article='East wind', text='some text2')
+Post.objects.create(author=Author(pk=2), position='NE', article='West coast', text='some text3')
+
+Post.objects.get(pk=1).category.add(Category.objects.get(name='North'))
+Post.objects.get(pk=1).category.add(Category.objects.get(name='West'))
+Post.objects.get(pk=2).category.add(Category.objects.get(name='South'))
+Post.objects.get(pk=3).category.add(Category.objects.get(name='East'))
+
+Comment.objects.create(post_id=pk1, user_id=pk1, text='some comment')
