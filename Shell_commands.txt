@@ -1,0 +1,7 @@
+from news.models import *
+
+User.objects.create_user('User1')
+User.objects.create_user('User2')
+
+Author.objects.create(user=User.objects.get(pk=1))
+Author.objects.create(user=User.objects.get(pk=2))
