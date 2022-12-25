@@ -21,7 +21,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     # Категории новостей/статей — темы, которые они отражают (спорт, политика, образование и т. д.).
-    category_name = models.CharField(max_length=255, unique=True) #название категории. Поле должно быть уникальным
+    name = models.CharField(max_length=255, unique=True) #название категории. Поле должно быть уникальным
 
 
 POSITION = (
