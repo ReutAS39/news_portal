@@ -12,10 +12,11 @@ class Author(models.Model):
         for comment in Comment.objects.filter(user=self.user): # суммарный рейтинг всех комментариев автора;
             self.rating += comment.rating
 
-        for post in Post.objects.filter(user=self.user):
+        for post in Post.objects.filter(author=Author.objects.get(user=self.user)):
             self.rating += post.rating * 3 # суммарный рейтинг каждой статьи автора умножается на 3;
             for post_comment in Comment.objects.filter(post=post):
-                self.rating += post_comment # суммарный рейтинг всех комментариев к статьям автора.
+                self.rating += post_comment.rating # суммарный рейтинг всех комментариев к статьям автора.
+        self.save()
 
 
 class Category(models.Model):
