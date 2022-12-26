@@ -1,23 +1,61 @@
 from news.models import *
 
+
+1.
 User.objects.create_user('User1')
 User.objects.create_user('User2')
 
+2.
 Author.objects.create(user=User.objects.get(pk=1))
 Author.objects.create(user=User.objects.get(pk=2))
 
+3.
 Category.objects.create(name='North')
 Category.objects.create(name='East')
 Category.objects.create(name='South')
 Category.objects.create(name='West')
 
+4.
 Post.objects.create(author=Author(pk=1), position='PO', article='North wind', text='some text')
 Post.objects.create(author=Author(pk=2), position='PO', article='East wind', text='some text2')
 Post.objects.create(author=Author(pk=2), position='NE', article='West coast', text='some text3')
 
+5.
 Post.objects.get(pk=1).category.add(Category.objects.get(name='North'))
 Post.objects.get(pk=1).category.add(Category.objects.get(name='West'))
 Post.objects.get(pk=2).category.add(Category.objects.get(name='South'))
 Post.objects.get(pk=3).category.add(Category.objects.get(name='East'))
 
-Comment.objects.create(post_id=pk1, user_id=pk1, text='some comment')
+6.
+Comment.objects.create(post=Post.objects.get(pk=1), user=User.objects.get(pk=1), text='some comment')
+Comment.objects.create(post=Post.objects.get(pk=1), user=User.objects.get(pk=2), text='some comment2')
+Comment.objects.create(post=Post.objects.get(pk=2), user=User.objects.get(pk=1), text='some comment3')
+Comment.objects.create(post=Post.objects.get(pk=3), user=User.objects.get(pk=1), text='some comment4')
+
+7.
+Post.objects.get(pk=1).like()
+Post.objects.get(pk=2).like()
+Post.objects.get(pk=2).like()
+Post.objects.get(pk=3).like()
+Post.objects.get(pk=3).like()
+Post.objects.get(pk=3).like()
+Post.objects.get(pk=3).dis_like()
+Comment.objects.get(pk=1).like()
+Comment.objects.get(pk=2).dis_like()
+Comment.objects.get(pk=3).like()
+Comment.objects.get(pk=3).like()
+
+8.
+Author.objects.get(pk=1).update_rating()
+Author.objects.get(pk=2).update_rating()
+
+9.
+a = Author.objects.all().order_by('-rating')
+f"Лучший пользователь {User.objects.get(id=a[0].id).username} с рейтингом {str(a[0].rating)}"
+
+10.
+p = Post.objects.all().order_by('-rating')
+f"{p[0].time_in} пользователь {User.objects.get(id=p[0].author.id).username} статья рейтингом {p[0].rating} c заголовком {p[0].article} : {p[0].preview()}"
+
+11.
+Comment.objects.filter(post=p[0]).values('time_in','user', 'rating','text')
