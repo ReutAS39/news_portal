@@ -23,6 +23,8 @@ class Category(models.Model):
     # Категории новостей/статей — темы, которые они отражают (спорт, политика, образование и т. д.).
     name = models.CharField(max_length=255, unique=True) #название категории. Поле должно быть уникальным
 
+    def __str__(self):
+        return self.name.title()
 
 POSITION = (
     ('PO', 'Post'),
@@ -50,6 +52,9 @@ class Post(models.Model):
 
     def preview(self):
         return f'{self.text[0:124]}...'
+
+    def __str__(self):
+        return f'{self.article.title()}: {self.text[:20]}'
 
 class PostCategory(models.Model):
     # Промежуточная модель для связи «многие ко многим»:
