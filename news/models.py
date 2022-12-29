@@ -54,7 +54,7 @@ class Post(models.Model):
         return f'{self.text[0:124]}...'
 
     def __str__(self):
-        return f'{self.article.title()}: {self.text[:20]}'
+        return f'{self.article.title()}: {self.time_in} : {self.text}'
 
 class PostCategory(models.Model):
     # Промежуточная модель для связи «многие ко многим»:
