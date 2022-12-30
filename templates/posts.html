@@ -1,6 +1,8 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
 
+{% load custom_filters %}
+
 <!-- Название у нас будет products -->
 {% block title %}
 Posts
@@ -29,9 +31,9 @@ Posts
                 от переменных в Python. Здесь также можно получать доступ к
                 полям объекта модели. Например, здесь мы выводим имя,
                 в следующем столбце описание, и т.д.  -->
-               <td>{{ post.article }}</td>
+               <td>{{ post.article|censor }}</td>
                <td>{{ post.time_in|date:'d M Y' }}</td>
-               <td>{{ post.text|truncatewords:20}}</td>
+               <td>{{ post.text|censor|truncatewords:20}}</td>
            </tr>
            {% endfor %}
 
