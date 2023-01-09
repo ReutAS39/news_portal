@@ -16,10 +16,12 @@ class PostsList(ListView):
     ordering = '-time_in'
     # Указываем имя шаблона, в котором будут все инструкции о том,
     # как именно пользователю должны быть показаны наши объекты
-    template_name = 'posts.html'
+    #template_name = 'posts.html'
+    template_name = 'news_list.html'
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
-    context_object_name = 'posts'
+    #context_object_name = 'posts'
+    context_object_name = 'news_list'
     paginate_by = 3  # вот так мы можем указать количество записей на странице
 
     # Переопределяем функцию получения списка товаров
@@ -42,7 +44,7 @@ class PostsList(ListView):
         # В ответе мы должны получить словарь.
         context = super().get_context_data(**kwargs)
         # К словарю добавим текущую дату в ключ 'time_now'.
-        context['posts_count'] = Post.objects.all()
+        context['news_count'] = Post.objects.all()
 #        context['posts_count'] = f'Количество статей: {Post}.objects.count()}'
         # Добавим ещё одну пустую переменную,
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
@@ -57,27 +59,41 @@ class PostDetail(DetailView):
     # Модель всё та же, но мы хотим получать информацию по отдельному товару
     model = Post
     # Используем другой шаблон — post.html
-    template_name = 'post.html'
+#    template_name = 'post.html'
+    template_name = 'news.html'
     # Название объекта, в котором будет выбранный пользователем продукт
-    context_object_name = 'post'
+    context_object_name = 'news'
 
 # Добавляем новое представление для создания товаров.
 class PostCreate(CreateView):
+
+    permission_required = ('news.add_post',)
+
     # Указываем нашу разработанную форму
     form_class = PostForm
     # модель товаров
     model = Post
     # и новый шаблон, в котором используется форма.
-    template_name = 'post_edit.html'
+    template_name = 'news_edit.html'
 # Добавляем представление для изменения товара.
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        path = self.request.META['PATH_INFO']
+
+        if path == '/news/article/create/':  #если статья - ставим False. По умолчанию - новость - True
+            post.is_news = False
+        return super().form_valid(form)
 
 class PostUpdate(UpdateView):
+
+    permission_required = ('news.change_post',)
+
     form_class = PostForm
     model = Post
-    template_name = 'post_edit.html'
+    template_name = 'news_edit.html'
 
 # Представление удаляющее статью.
 class PostDelete(DeleteView):
     model = Post
-    template_name = 'post_delete.html'
-    success_url = reverse_lazy('post_list')
+    template_name = 'news_delete.html'
+    success_url = reverse_lazy('news_list')

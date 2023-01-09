@@ -10,23 +10,15 @@ urlpatterns = [
    # Т.к. наше объявленное представление является классом,
    # а Django ожидает функцию, нам надо представить этот класс в виде view.
    # Для этого вызываем метод as_view.
-   path('', PostsList.as_view(), name='post_list'),
-   path('<int:pk>', PostDetail.as_view(), name='post_detail'),
-   path('create/', PostCreate.as_view(), name='post_create'),
-   path('<int:pk>/update/', PostUpdate.as_view(), name='post_update'),
-   path('<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
+   path('', PostsList.as_view(), name='news_list'),
+   path('<int:pk>', PostDetail.as_view(), name='news'),
+   #path('create/', PostCreate.as_view(), name='post_create'),
+   path('news/create/', PostCreate.as_view(), name='news_create'),
+   #path('<int:pk>/update/', PostUpdate.as_view(), name='post_update'),
+   path('news/<int:pk>/edit', PostUpdate.as_view(), name='news_edit'),
+   #path('<int:pk>/delete/', PostDelete.as_view(), name='post_delete'),
+   path('news/<int:pk>/delete', PostDelete.as_view(), name='news_delete'),
+   path('articles/create/', PostCreate.as_view(), name='articles_create'),
+   path('articles/<int:pk>/edit', PostUpdate.as_view(), name='articles_edit'),
+   path('articles/<int:pk>/delete', PostDelete.as_view(), name='articles_delete'),
 ]
-
-# path('news/create/', PostCreate.as_view(), name='news_create'),
-# path('news/<int:pk>/update', PostUpdate.as_view(), name='news_update'),
-# path('news/<int:pk>/delete', PostDelete.as_view(), name='news_delete'),
-# path('article/create/', PostCreate.as_view(), name='article_create'),
-# path('article/<int:pk>/update', PostUpdate.as_view(), name='article_update'),
-# path('article/<int:pk>/delete', PostDelete.as_view(), name='article_delete'),
-#
-# /news/create/
-# /news/<int:pk>/edit/
-# /news/<int:pk>/delete/
-# /articles/create/
-# /articles/<int:pk>/edit/
-# /articles/<int:pk>/delete/
