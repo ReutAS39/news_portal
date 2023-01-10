@@ -78,8 +78,10 @@ class PostCreate(CreateView):
         post = form.save(commit=False)
         path = self.request.META['PATH_INFO']
 
-        if path == '/news/articles/create/':  #если статья - ставим False. По умолчанию - новость - True
-            post.is_news = False
+        if path == '/news/articles/create/':
+            post.position = 'PO'
+        else:
+            post.position = 'NE'
         return super().form_valid(form)
 
 class PostUpdate(UpdateView):
