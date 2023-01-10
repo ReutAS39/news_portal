@@ -58,7 +58,7 @@ class Post(models.Model):
         return f'{self.article.title()}: {self.time_in} : {self.text}'
 
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
+        return reverse('news', args=[str(self.id)])
 
 class PostCategory(models.Model):
     # Промежуточная модель для связи «многие ко многим»:

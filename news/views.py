@@ -67,8 +67,6 @@ class PostDetail(DetailView):
 # Добавляем новое представление для создания товаров.
 class PostCreate(CreateView):
 
-    permission_required = ('news.add_post',)
-
     # Указываем нашу разработанную форму
     form_class = PostForm
     # модель товаров
@@ -80,13 +78,11 @@ class PostCreate(CreateView):
         post = form.save(commit=False)
         path = self.request.META['PATH_INFO']
 
-        if path == '/news/article/create/':  #если статья - ставим False. По умолчанию - новость - True
+        if path == '/news/articles/create/':  #если статья - ставим False. По умолчанию - новость - True
             post.is_news = False
         return super().form_valid(form)
 
 class PostUpdate(UpdateView):
-
-    permission_required = ('news.change_post',)
 
     form_class = PostForm
     model = Post
