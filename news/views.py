@@ -1,12 +1,14 @@
 from datetime import datetime
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
+
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Post
+from .models import Post, Author, User
 from .filters import PostFilter
-from .forms import PostForm
+from .forms import PostForm, UserForm
 
 
 class PostsList(ListView):
@@ -64,7 +66,7 @@ class PostDetail(DetailView):
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
 
-# Добавляем новое представление для создания товаров.
+
 class PostCreate(CreateView):
 
     # Указываем нашу разработанную форму
@@ -84,14 +86,31 @@ class PostCreate(CreateView):
             post.position = 'NE'
         return super().form_valid(form)
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin,UpdateView):
 
     form_class = PostForm
     model = Post
     template_name = 'news_edit.html'
 
 # Представление удаляющее статью.
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin,DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news_list')
+
+
+class UserDetail(DetailView):
+    # Модель всё та же, но мы хотим получать информацию по отдельному товару
+    model = User
+    # Используем другой шаблон — post.html
+#    template_name = 'post.html'
+    template_name = 'testprofile.html'
+    # Название объекта, в котором будет выбранный пользователем продукт
+    context_object_name = 'testprofile'
+# Добавляем новое представление для создания товаров.
+
+class UserUpdate(LoginRequiredMixin,UpdateView):
+
+    form_class = UserForm
+    model = User
+    template_name = 'news_edit.html'

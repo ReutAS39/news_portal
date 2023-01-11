@@ -1,0 +1,19 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Testprofile
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h1>{{ testprofile.username }}</h1>
+<h1>{{ testprofile.rating }}</h1>
+<h1>{{ testprofile.email }}</h1>
+
+
+
+{% endblock content %}
