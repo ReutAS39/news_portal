@@ -6,9 +6,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Post, Author, User
+from .models import Post #Author, User
 from .filters import PostFilter
-from .forms import PostForm, UserForm
+from .forms import PostForm #UserForm
 
 
 class PostsList(ListView):
@@ -99,18 +99,18 @@ class PostDelete(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('news_list')
 
 
-class UserDetail(DetailView):
-    # Модель всё та же, но мы хотим получать информацию по отдельному товару
-    model = User
-    # Используем другой шаблон — post.html
-#    template_name = 'post.html'
-    template_name = 'testprofile.html'
-    # Название объекта, в котором будет выбранный пользователем продукт
-    context_object_name = 'testprofile'
-# Добавляем новое представление для создания товаров.
-
-class UserUpdate(LoginRequiredMixin,UpdateView):
-
-    form_class = UserForm
-    model = User
-    template_name = 'news_edit.html'
+# class UserDetail(DetailView):
+#     # Модель всё та же, но мы хотим получать информацию по отдельному товару
+#     model = User
+#     # Используем другой шаблон — post.html
+# #    template_name = 'post.html'
+#     template_name = 'testprofile.html'
+#     # Название объекта, в котором будет выбранный пользователем продукт
+#     context_object_name = 'testprofile'
+# # Добавляем новое представление для создания товаров.
+#
+# class UserUpdate(LoginRequiredMixin,UpdateView):
+#
+#     form_class = UserForm
+#     model = User
+#     template_name = 'news_edit.html'

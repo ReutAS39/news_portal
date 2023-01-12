@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from .models import Post, Author, User
+from .models import Post #Author, User
 
 class PostForm(forms.ModelForm):
    article = forms.CharField(max_length=255, label='Заголовок:')
@@ -33,13 +33,13 @@ class PostForm(forms.ModelForm):
 
        return cleaned_data
 
-class UserForm(forms.ModelForm):
-   class Meta:
-       model = User
-       fields = [
-           'username',
-       ]
-
-       labels = {
-           'username': _('Имя пользователя'),
-       }
+# class UserForm(forms.ModelForm):
+#    class Meta:
+#        model = User
+#        fields = [
+#            'username',
+#        ]
+#
+#        labels = {
+#            'username': _('Имя пользователя'),
+#        }
