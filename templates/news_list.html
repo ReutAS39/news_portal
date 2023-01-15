@@ -12,7 +12,15 @@ News_list
 
 <!-- В контенте на странице мы выводим все товары -->
 {% block content %}
-   <h1>Все статьи</h1>
+{% if auth %}
+<h3>Страница авторизованного пользователя {{request.user.username}}</h3>
+<!--<div> Здесь может содержаться персональная информация для каждого пользователя </div>-->
+<button> <a href="../accounts/logout/">Выйти</a> </button>
+{% endif %}
+{% if is_not_author and auth%}
+<button> <a href="upgrade/"> Хочу стать автором!</a> </button>
+{% endif %}
+<h1>Все статьи</h1>
    <h3>{{ news_count|length }}</h3>
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">

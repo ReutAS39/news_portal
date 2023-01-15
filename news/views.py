@@ -1,15 +1,23 @@
 from datetime import datetime
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
-
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from .models import Post #Author, User
 from .filters import PostFilter
 from .forms import PostForm #UserForm
 
+@login_required
+def upgrade_me(request):
+    user = request.user
+    author_group = Group.objects.get(name='authors')
+    if not request.user.groups.filter(name='authors').exists():
+        author_group.user_set.add(user)
+    return redirect('/news')
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -55,6 +63,9 @@ class PostsList(ListView):
         # Добавим ещё одну пустую переменную,
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         context['next_sale'] = None
+        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
+        context['is_not_common'] = not self.request.user.groups.filter(name='common').exists()
+        context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
 
 class PostDetail(DetailView):
@@ -67,7 +78,7 @@ class PostDetail(DetailView):
     context_object_name = 'news'
 
 
-class PostCreate(CreateView):
+class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     # Указываем нашу разработанную форму
     form_class = PostForm
@@ -86,11 +97,15 @@ class PostCreate(CreateView):
             post.position = 'NE'
         return super().form_valid(form)
 
-class PostUpdate(LoginRequiredMixin,UpdateView):
+    permission_required = ('news.change_post',)
+
+class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     form_class = PostForm
     model = Post
     template_name = 'news_edit.html'
+
+    permission_required = ('news.add_post',)
 
 # Представление удаляющее статью.
 class PostDelete(LoginRequiredMixin,DeleteView):
