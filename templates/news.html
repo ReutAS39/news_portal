@@ -10,8 +10,9 @@ News
 
 <!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
 {% block content %}
-<h1>{{ news.article|censor }}</h1>
+<h2>{{ news.article|censor }}</h2>
 <h4>{{ news.time_in|date:'d M Y' }}</h4>
 <p>{{ news.text|censor }}</p>
+<button> <a href="upgrade/"> Подписаться</a> </button>
 {% endblock content %}
 

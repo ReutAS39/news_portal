@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 ]
 
+DEFAULT_FROM_EMAIL = ''  # здесь указываем уже свою ПОЛНУЮ почту, с которой будут отправляться письма
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
