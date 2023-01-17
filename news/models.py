@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class Author(models.Model):
     # Модель, содержащая объекты всех авторов.
-    user = models.OneToOneField(User, on_delete=models.CASCADE)#cвязь «один к одному» с встроенной моделью пользователей User;
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  #cвязь «один к одному» с встроенной моделью пользователей User;
     rating = models.FloatField(default=0.0) # рейтинг пользователя. Ниже будет дано описание того, как этот рейтинг можно посчитать.
 
     def update_rating(self): # Метод модели Author, который обновляет рейтинг пользователя, переданный в аргумент этого метода.
@@ -23,6 +23,7 @@ class Author(models.Model):
 class Category(models.Model):
     # Категории новостей/статей — темы, которые они отражают (спорт, политика, образование и т. д.).
     name = models.CharField(max_length=255, unique=True) #название категории. Поле должно быть уникальным
+    subscribers = models.ManyToManyField(User)
 
     def __str__(self):
         return self.name.title()
