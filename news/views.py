@@ -1,12 +1,16 @@
 from datetime import datetime
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
+from django.core.mail import EmailMultiAlternatives # импортируем класс для создание объекта письма с html
+from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
+from django.core.mail import send_mail
+
 from .models import Post #Author, User
 from .filters import PostFilter
 from .forms import PostForm #UserForm
@@ -95,6 +99,31 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
             post.position = 'PO'
         else:
             post.position = 'NE'
+
+        # send_mail(
+        #     subject=post.article,  # имя клиента и дата записи будут в теме для удобства
+        #     message=post.text,  # сообщение с кратким описанием проблемы
+        #     from_email='CamcoHKappacko@yandex.ru', # здесь указываете почту, с которой будете отправлять (об этом попозже)
+        #     recipient_list=['chillyvilly@mailtest.html.ru']  # здесь список получателей. Например, секретарь, сам врач и т. д.
+        # )
+        # получаем наш html
+        html_content = render_to_string(
+            'mailtest.html',
+            {
+                'post': post,
+            }
+        )
+
+        # в конструкторе уже знакомые нам параметры, да? Называются правда немного по-другому, но суть та же.
+        msg = EmailMultiAlternatives(
+            subject=f'{post.article}',
+            body=post.text,  # это то же, что и message
+            from_email='CamcoHKappacko@yandex.ru',
+            to=['chillyvilly@mail.ru'],  # это то же, что и recipients_list
+        )
+        msg.attach_alternative(html_content, "text/html")  # добавляем html
+
+        msg.send()  # отсылаем
         return super().form_valid(form)
 
     permission_required = ('news.change_post',)

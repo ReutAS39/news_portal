@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 ]
 
-DEFAULT_FROM_EMAIL = ''  # здесь указываем уже свою ПОЛНУЮ почту, с которой будут отправляться письма
-
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -84,7 +82,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
+    # `allauth` specific authentication methods, such as login by e-mailtest.html
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -157,3 +155,11 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_FORMS = {'signup': 'news.forms.BasicSignupForm'}
+
+#DEFAULT_FROM_EMAIL = 'CamcoHKappacko@yandex.ru'
+
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
+EMAIL_HOST_USER = 'CamcoHKappacko'  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = ''  # пароль от почты
+EMAIL_USE_SSL = True
