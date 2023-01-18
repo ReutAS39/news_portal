@@ -7,9 +7,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
-from django.core.mail import EmailMultiAlternatives # импортируем класс для создание объекта письма с html
+from django.core.mail import EmailMultiAlternatives, send_mail # импортируем класс для создание объекта письма с html
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
-from django.core.mail import send_mail
+
 
 from .models import Post #Author, User
 from .filters import PostFilter
