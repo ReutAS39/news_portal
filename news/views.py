@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
-from django.core.mail import EmailMultiAlternatives, send_mail # импортируем класс для создание объекта письма с html
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 
 
@@ -23,13 +22,6 @@ def upgrade_me(request):
         author_group.user_set.add(user)
     return redirect('/news')
 
-# @login_required
-# def subscribe_me(request, i):
-#     user = User.objects.get(username=request.user)
-#     if user:
-#         cat1 = Category.objects.get(pk=i)
-#         cat1.subscriber.add(user)
-#     return redirect('/news/')
 
 def subscribe_me(request, pk):
      user = request.user
@@ -53,7 +45,7 @@ class PostsList(ListView):
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     #context_object_name = 'posts'
     context_object_name = 'news_list'
-    paginate_by = 3  # вот так мы можем указать количество записей на странице
+    paginate_by = 5  # вот так мы можем указать количество записей на странице
 
     # Переопределяем функцию получения списка товаров
     def get_queryset(self):
@@ -125,23 +117,23 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         #     recipient_list=['chillyvilly@mailtest.html.ru']  # здесь список получателей. Например, секретарь, сам врач и т. д.
         # )
         # получаем наш html
-        html_content = render_to_string(
-            'mailtest.html',
-            {
-                'post': post,
-            }
-        )
-
-        # в конструкторе уже знакомые нам параметры, да? Называются правда немного по-другому, но суть та же.
-        msg = EmailMultiAlternatives(
-            subject=f'{post.article}',
-            body=post.text,  # это то же, что и message
-            from_email='CamcoHKappacko@yandex.ru',
-            to=['chillyvilly@mail.ru'],  # это то же, что и recipients_list
-        )
-        msg.attach_alternative(html_content, "text/html")  # добавляем html
-
-        msg.send()  # отсылаем
+        # html_content = render_to_string(
+        #     'mailtest.html',
+        #     {
+        #         'post': post,
+        #     }
+        # )
+        #
+        # # в конструкторе уже знакомые нам параметры, да? Называются правда немного по-другому, но суть та же.
+        # msg = EmailMultiAlternatives(
+        #     subject=f'{post.article}',
+        #     body=post.text,  # это то же, что и message
+        #     from_email='CamcoHKappacko@yandex.ru',
+        #     to=['chillyvilly@mail.ru'],  # это то же, что и recipients_list
+        # )
+        # msg.attach_alternative(html_content, "text/html")  # добавляем html
+        #
+        # msg.send()  # отсылаем
         return super().form_valid(form)
 
     permission_required = ('news.change_post',)

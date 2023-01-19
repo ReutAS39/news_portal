@@ -1,23 +1,10 @@
-from django.db.models.signals import post_save
-from django.db.models.signals import m2m_changed
+from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver  # импортируем нужный декоратор
 from django.core.mail import send_mail
 from .models import PostCategory
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
 
-
-# в декоратор передаётся первым аргументом сигнал, на который будет реагировать эта функция, и в отправители надо передать также модель
-# @receiver(post_save, sender=Post)
-# def notify_managers_appointment(sender, instance, created, **kwargs):
-#     if created:
-#         subject = f'{instance.client_name} {instance.date.strftime("%d %m %Y")}'
-#     else:
-#         subject = f'Appointment changed for {instance.client_name} {instance.date.strftime("%d %m %Y")}'
-#
-#     mail_managers(
-#         subject=subject,
-#         message=instance.message,
-#     )
-#     mail_
 
 @receiver(m2m_changed, sender=PostCategory)
 def mass_sender(sender, instance, action, **kwargs):
@@ -28,31 +15,33 @@ def mass_sender(sender, instance, action, **kwargs):
             subscribers += category.subscribers.all()
 
         subscribers_email_list = []
-        for subscr in subscribers:
-            subscribers_email_list.append(subscr.email)
+        for subscriber in subscribers:
+            subscribers_email_list.append(subscriber.email)
 
-        send_mail(
-            subject=f'Hi {subscr.username} we have some news for you!',
-            message=f'{instance.text}',
-            from_email='CamcoHKappacko@yandex.ru',
-            recipient_list=subscribers_email_list
-        )
+        if subscribers_email_list:
+            send_mail(
+                subject=f'Hi {subscriber.username} we have some news for you!',
+                message=f'{instance.text[:200]}',
+                from_email='CamcoHKappacko@yandex.ru',
+                recipient_list=subscribers_email_list
+            )
 
-        # send_mail(
-        #     subject=f'Hi we have some news for you!',
-        #     message=f'{instance.text}',
-        #     from_email='CamcoHKappacko@yandex.ru',
-        #     recipient_list=['qualitya039@gmail.com']
-        # )
-
-        # categories = instance.category.all()
-        # #наполняем список подписчиков категорий добавленной статьи
-        # subscribers = []
-        # for category in categories:
-        #     subscribers += category.subscribers.all()
-        #
-        # subscribers_email_list = []
-        # for subscr in subscribers:
-        #     subscribers_email_list.append(subscr.email)
-        #
-        # send_email_notif(instance.preview(), instance.pk, instance.title, subscribers_email_list)
+            # #получаем наш html
+            # html_content = render_to_string(
+            #     'mailtest.html',
+            #     {
+            #         'post': msg,
+            #     }
+            # )
+            #
+            # # в конструкторе уже знакомые нам параметры, да? Называются правда немного по-другому, но суть та же.
+            # msg = EmailMultiAlternatives(
+            #     subject=f'Hi {subscriber.username} we have some news for you!',
+            #     body=f'{instance.text[:200]}',  # это то же, что и message
+            #     from_email='CamcoHKappacko@yandex.ru',
+            #     to=subscribers_email_list,  # это то же, что и recipients_list
+            # )
+            # msg.attach_alternative(html_content, "text/html")  # добавляем html
+            #
+            # msg.send()  # отсылаем
+            print(subscribers_email_list)
