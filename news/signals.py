@@ -20,11 +20,39 @@ from .models import PostCategory
 #     mail_
 
 @receiver(m2m_changed, sender=PostCategory)
-def mass_sender(request, sender, instance, action, **kwargs):
+def mass_sender(sender, instance, action, **kwargs):
     if action == "post_add":
+        categories = instance.category.all()
+        subscribers = []
+        for category in categories:
+            subscribers += category.subscribers.all()
+
+        subscribers_email_list = []
+        for subscr in subscribers:
+            subscribers_email_list.append(subscr.email)
+
         send_mail(
-            subject=f'Hi {request.user}, we have some news for you!',
+            subject=f'Hi {subscr.username} we have some news for you!',
             message=f'{instance.text}',
             from_email='CamcoHKappacko@yandex.ru',
-            recipient_list=['qualytya039@gmail.com']
+            recipient_list=subscribers_email_list
         )
+
+        # send_mail(
+        #     subject=f'Hi we have some news for you!',
+        #     message=f'{instance.text}',
+        #     from_email='CamcoHKappacko@yandex.ru',
+        #     recipient_list=['qualitya039@gmail.com']
+        # )
+
+        # categories = instance.category.all()
+        # #наполняем список подписчиков категорий добавленной статьи
+        # subscribers = []
+        # for category in categories:
+        #     subscribers += category.subscribers.all()
+        #
+        # subscribers_email_list = []
+        # for subscr in subscribers:
+        #     subscribers_email_list.append(subscr.email)
+        #
+        # send_email_notif(instance.preview(), instance.pk, instance.title, subscribers_email_list)

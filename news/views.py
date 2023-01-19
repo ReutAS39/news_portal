@@ -6,12 +6,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.core.mail import EmailMultiAlternatives, send_mail # импортируем класс для создание объекта письма с html
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 
 
-from .models import Post #Author, User
+from .models import Post, Category #Author, User
 from .filters import PostFilter
 from .forms import PostForm #UserForm
 
@@ -22,6 +22,23 @@ def upgrade_me(request):
     if not request.user.groups.filter(name='authors').exists():
         author_group.user_set.add(user)
     return redirect('/news')
+
+# @login_required
+# def subscribe_me(request, i):
+#     user = User.objects.get(username=request.user)
+#     if user:
+#         cat1 = Category.objects.get(pk=i)
+#         cat1.subscriber.add(user)
+#     return redirect('/news/')
+
+def subscribe_me(request, pk):
+     user = request.user
+     category = Category.objects.get(pk=pk)
+     category.subscribers.add(user)
+#
+#     message = "Вы подписались на рссылку новостей категории "
+#     return render(request, 'subscribe.html', {'category': category, 'message': message})
+     return redirect('/news')
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -69,6 +86,7 @@ class PostsList(ListView):
         context['next_sale'] = None
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['is_not_common'] = not self.request.user.groups.filter(name='common').exists()
+        context['get_category'] = Category.objects.all()
         context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
 

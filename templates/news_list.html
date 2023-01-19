@@ -22,6 +22,21 @@ News_list
 {% endif %}
 <h1>Все статьи</h1>
    <h3>{{ news_count|length }}</h3>
+    <div class="col">
+       <div class="news">
+           <a href="/news" title="разделы новостей">Категории:</a> |
+           {% for c in get_category %}
+                <a href="?category={{c.id}}"
+                {% if request.GET.category == c.id|title %}
+                    class="bold"
+                {% endif %}
+                >{{ c.name }}</a> |
+           {% endfor %}
+       </div>
+    </div>
+    {% if request.user.username and request.GET.category %}
+               <br><a href="/news/subscribe/{{request.GET.category}}"><b>Подписаться на новости раздела</b></a>
+    {% endif%}
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
