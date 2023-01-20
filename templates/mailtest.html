@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>{{ subscriber.username }} Спасибо за запись!</h2>
-    <p> Вы записаны по вопросу: {{ instance.text|truncatechars:150 }} </p>
+    <h2> Здравствуй {{ subscriber.username }}! </h2>
+    <h2> Вышла новая <a href="{{ link }}">статья</a> в разделе, на который вы подписаны!</h2>
+    <p> {{ instance.text|truncatechars:150 }} </p>
 </body>
 </html>

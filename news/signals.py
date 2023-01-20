@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from .models import PostCategory
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
+from news_portal import settings
 
 
 @receiver(m2m_changed, sender=PostCategory)
@@ -19,11 +20,20 @@ def mass_sender(sender, instance, action, **kwargs):
             subscribers_email_list.append(subscriber.email)
 
         if subscribers_email_list:
+            html_content = render_to_string(
+                    'mailtest.html',
+                    {
+                        'instance': instance,
+                        'subscriber': subscriber,
+                        'link': f'{settings.SITE_URL}/news/{instance.id}',
+                    })
+
             send_mail(
-                subject=f'Hi {subscriber.username} we have some news for you!',
-                message=f'{instance.text[:200]}',
+                subject=f'{instance.article}',
+                message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе!!{instance.text[:200]}',
                 from_email='CamcoHKappacko@yandex.ru',
-                recipient_list=subscribers_email_list
+                recipient_list=subscribers_email_list,
+                html_message=html_content
             )
 
             # #получаем наш html
@@ -45,3 +55,4 @@ def mass_sender(sender, instance, action, **kwargs):
             #
             # msg.send()  # отсылаем
             print(subscribers_email_list)
+            print(instance)
