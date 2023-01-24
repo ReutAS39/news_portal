@@ -172,3 +172,9 @@ APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 
 # если задача не выполняется за 25 секунд, то она автоматически снимается, можете поставить время побольше, но как правило, это сильно бьёт по производительности сервера
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
+CELERY_BROKER_URL = 'redis://default:***@redis-14422.c253.us-central1-1.gce.cloud.redislabs.com:14422'
+CELERY_RESULT_BACKEND = 'redis://default:***@redis-14422.c253.us-central1-1.gce.cloud.redislabs.com:14422'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
