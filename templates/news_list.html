@@ -63,7 +63,8 @@ News_list
                 от переменных в Python. Здесь также можно получать доступ к
                 полям объекта модели. Например, здесь мы выводим имя,
                 в следующем столбце описание, и т.д.  -->
-               <td>{{ news.article|censor }}</td>
+               <!--<td>{{ news.article|censor }}</td>-->
+               <td><a href="{{ news.id }}">{{ news.article|censor }}</a></td>
                <td>{{ news.time_in|date:'d M Y' }}</td>
                <td>{{ news.text|censor|truncatewords:20}}</td>
            </tr>

@@ -13,6 +13,7 @@ from django.template.loader import render_to_string  # импортируем ф
 from .models import Post, Category #Author, User
 from .filters import PostFilter
 from .forms import PostForm #UserForm
+#from .tasks import hello, printer, mass_sender
 
 @login_required
 def upgrade_me(request):
@@ -45,7 +46,7 @@ class PostsList(ListView):
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     #context_object_name = 'posts'
     context_object_name = 'news_list'
-    paginate_by = 5  # вот так мы можем указать количество записей на странице
+    paginate_by = 10  # вот так мы можем указать количество записей на странице
 
     # Переопределяем функцию получения списка товаров
     def get_queryset(self):
@@ -134,6 +135,9 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         # msg.attach_alternative(html_content, "text/html")  # добавляем html
         #
         # msg.send()  # отсылаем
+
+###        mass_sender.delay(post.id)
+
         return super().form_valid(form)
 
     permission_required = ('news.change_post',)
