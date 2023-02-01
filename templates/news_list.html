@@ -20,8 +20,8 @@ News_list
 {% if is_not_author and auth%}
 <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
-<h1>Все статьи</h1>
-   <h3>{{ news_count|length }}</h3>
+<h2>Все статьи</h2>
+   <h4>{{ news_count|length }}</h4>
     <div class="col">
        <div class="news">
            <a href="/news" title="разделы новостей">Категории:</a> |
@@ -94,11 +94,9 @@ News_list
    {# Информация о следующих страницах #}
    {% if page_obj.has_next %}
        <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
-    <!--<a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>-->
        {% if paginator.num_pages != page_obj.next_page_number %}
            ...
        <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
-         <!--  <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>-->
        {% endif %}
    {% endif %}
 
