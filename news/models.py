@@ -19,6 +19,8 @@ class Author(models.Model):
                 self.rating += post_comment.rating # суммарный рейтинг всех комментариев к статьям автора.
         self.save()
 
+    def __str__(self):
+        return self.user.username
 
 class Category(models.Model):
     # Категории новостей/статей — темы, которые они отражают (спорт, политика, образование и т. д.).

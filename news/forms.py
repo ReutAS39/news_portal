@@ -5,15 +5,16 @@ from django.contrib.auth.models import Group
 
 from django.utils.translation import gettext_lazy as _
 
-from .models import Post #Author, User
+from .models import Post
+
 
 class PostForm(forms.ModelForm):
    article = forms.CharField(max_length=255, label='Заголовок:')
+
    class Meta:
        model = Post
        fields = [
            'author',
-           #'position',
            'category',
            'article',
            'text',
