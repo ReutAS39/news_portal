@@ -9,33 +9,37 @@ from .models import Post
 
 
 class PostForm(forms.ModelForm):
-   article = forms.CharField(max_length=255, label='Заголовок:')
+    article = forms.CharField(max_length=255, label='Заголовок:')
 
-   class Meta:
-       model = Post
-       fields = [
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['author'].empty_label = 'Выберите автора'
+
+    class Meta:
+        model = Post
+        fields = [
            'author',
            'category',
            'article',
            'text',
-       ]
+        ]
+        widgets = {
+           'article': forms.TextInput(attrs={'class': 'form-input'}),
+           'text': forms.Textarea(attrs={'cols': 80, 'rows': 10}),
+        }
 
-       labels = {
+        labels = {
            'text': _('Текст'),
            'author': _('Автор:'),
            'category': _('Категории:'),
-           'position': _('Статья/новость')
-       }
+        }
 
-   def clean(self):
-       cleaned_data = super().clean()
-       text = cleaned_data.get("text")
-       if text is not None and len(text) < 20:
-           raise ValidationError({
-               "text": "Текст не может быть менее 20 символов."
-           })
+    def clean_text(self):
+        text = self.cleaned_data["text"]
+        if text is not None and len(text) < 20:
+            raise ValidationError("Текст не может быть менее 20 символов.")
 
-       return cleaned_data
+        return text
 
 
 class BasicSignupForm(SignupForm):
@@ -45,15 +49,3 @@ class BasicSignupForm(SignupForm):
         common_group = Group.objects.get(name='common')
         common_group.user_set.add(user)
         return user
-
-
-# class UserForm(forms.ModelForm):
-#    class Meta:
-#        model = User
-#        fields = [
-#            'username',
-#        ]
-#
-#        labels = {
-#            'username': _('Имя пользователя'),
-#        }
