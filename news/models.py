@@ -75,9 +75,9 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE) # связь «один ко многим» с моделью Post;
     user = models.ForeignKey(User, on_delete=models.CASCADE) # связь «один ко многим» со встроенной моделью User
 # (комментарии может оставить любой пользователь, необязательно автор);
-    text = models.CharField(max_length=255)# текст комментария;
-    time_in = models.DateTimeField(auto_now_add=True)# дата и время создания комментария;
-    rating = models.FloatField(default=0.0)# рейтинг комментария.
+    text = models.CharField(max_length=255)
+    time_in = models.DateTimeField(auto_now_add=True)
+    rating = models.FloatField(default=0.0)
 
     def like(self):
         self.rating += 1

@@ -10,9 +10,9 @@ from django.contrib.auth.models import Group, User
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 
 
-from .models import Post, Category #Author, User
+from .models import Post, Category
 from .filters import PostFilter
-from .forms import PostForm #UserForm
+from .forms import PostForm
 #from .tasks import hello, printer, mass_sender
 
 @login_required
@@ -40,7 +40,6 @@ class PostsList(ListView):
     ordering = '-time_in'
     # Указываем имя шаблона, в котором будут все инструкции о том,
     # как именно пользователю должны быть показаны наши объекты
-    #template_name = 'posts.html'
     template_name = 'news_list.html'
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
@@ -53,30 +52,25 @@ class PostsList(ListView):
         # Получаем обычный запрос
         queryset = super().get_queryset()
         # Используем наш класс фильтрации.
-        # self.request.GET содержит объект QueryDict, который мы рассматривали
-        # в этом юните ранее.
-        # Сохраняем нашу фильтрацию в объекте класса,
-        # чтобы потом добавить в контекст и использовать в шаблоне.
+        # self.request.GET содержит объект QueryDict, который мы рассматривали в этом юните ранее.
+        # Сохраняем нашу фильтрацию в объекте класса, чтобы потом добавить в контекст и использовать в шаблоне.
         self.filterset = PostFilter(self.request.GET, queryset)
         # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
 
     def get_context_data(self, **kwargs):
         # С помощью super() мы обращаемся к родительским классам
-        # и вызываем у них метод get_context_data с теми же аргументами,
-        # что и были переданы нам.
+        # и вызываем у них метод get_context_data с теми же аргументами, что и были переданы нам.
         # В ответе мы должны получить словарь.
         context = super().get_context_data(**kwargs)
-        # К словарю добавим текущую дату в ключ 'time_now'.
-        context['news_count'] = Post.objects.all()
-#        context['posts_count'] = f'Количество статей: {Post}.objects.count()}'
-        # Добавим ещё одну пустую переменную,
+        context['news_count'] = f'Количество статей: {Post.objects.count()}'
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         # Добавляем в контекст объект фильтрации.
         context['filterset'] = self.filterset
         # Добавим ещё одну пустую переменную,
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         context['next_sale'] = None
+        context['title'] = 'Главная страница'
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['is_not_common'] = not self.request.user.groups.filter(name='common').exists()
         context['get_category'] = Category.objects.all()
@@ -97,7 +91,6 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     # Указываем нашу разработанную форму
     form_class = PostForm
-    # модель товаров
     model = Post
     # и новый шаблон, в котором используется форма.
     template_name = 'news_edit.html'
@@ -150,25 +143,8 @@ class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     permission_required = ('news.add_post',)
 
-# Представление удаляющее статью.
 class PostDelete(LoginRequiredMixin,DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news_list')
 
-
-# class UserDetail(DetailView):
-#     # Модель всё та же, но мы хотим получать информацию по отдельному товару
-#     model = User
-#     # Используем другой шаблон — post.html
-# #    template_name = 'post.html'
-#     template_name = 'testprofile.html'
-#     # Название объекта, в котором будет выбранный пользователем продукт
-#     context_object_name = 'testprofile'
-# # Добавляем новое представление для создания товаров.
-#
-# class UserUpdate(LoginRequiredMixin,UpdateView):
-#
-#     form_class = UserForm
-#     model = User
-#     template_name = 'news_edit.html'
