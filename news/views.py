@@ -15,6 +15,12 @@ from .filters import PostFilter
 from .forms import PostForm
 #from .tasks import hello, printer, mass_sender
 
+#menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+menu = [{'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Добавить статью', 'url_name': 'create'},
+        {'title': 'Войти', 'url_name': 'login'},
+]
+
 @login_required
 def upgrade_me(request):
     user = request.user
@@ -70,7 +76,7 @@ class PostsList(ListView):
         # Добавим ещё одну пустую переменную,
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         context['next_sale'] = None
-        context['title'] = 'Главная страница'
+        context['menu'] = menu
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['is_not_common'] = not self.request.user.groups.filter(name='common').exists()
         context['get_category'] = Category.objects.all()
@@ -86,6 +92,14 @@ class PostDetail(DetailView):
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
 
+    def get_context_data(self, **kwargs):
+        # С помощью super() мы обращаемся к родительским классам
+        # и вызываем у них метод get_context_data с теми же аргументами, что и были переданы нам.
+        # В ответе мы должны получить словарь.
+        context = super().get_context_data(**kwargs)
+        context['menu'] = menu
+
+        return context
 
 class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
