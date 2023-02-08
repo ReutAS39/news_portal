@@ -166,9 +166,17 @@ class CategoryList(ListView):
     model = Post
     template_name = 'news_list.html'
     context_object_name = 'news_list'
+    paginate_by = 5  # вот так мы можем указать количество записей на странице
 
     def get_queryset(self):
-#        queryset = super().get_queryset()
- #       self.filterset = PostFilter(self.request.GET, queryset)
+        queryset = super().get_queryset()
+        self.filterset = PostFilter(self.request.GET, queryset)
         return Post.objects.filter(category=self.kwargs['pk'])
-#return self.filterset.qs
+ #       return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+#        context['filterset'] = self.filterset
+        context['menu'] = menu
+        context['news_count'] = f'Количество статей: {Post.objects.filter(category=self.kwargs["pk"]).count()}'
+        return context
