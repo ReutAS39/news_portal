@@ -30,6 +30,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name.title()
 
+    def get_absolute_url(self):
+        return reverse('category', args=[str(self.pk)]) ## TO DO
+
 POSITION = (
     ('PO', 'Post'),
     ('NE', 'News')

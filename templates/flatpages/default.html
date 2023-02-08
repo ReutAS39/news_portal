@@ -15,7 +15,7 @@
         <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
    <div class="container">
-       <a class="navbar-brand" href="#">Django flatpages</a>
+       <a class="navbar-brand" href="/news">News Portal</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse"
                data-target="#navbarResponsive"
                aria-controls="navbarResponsive" aria-expanded="false"
@@ -26,16 +26,19 @@
            <ul class="navbar-nav ml-auto">
 {% block mainmenu %}
 {% for m in menu %}
-    {% if not forloop.last %}
                <li class="nav-item active">
                    <a class="nav-link" href="#">{{m.title}}</a>
                </li>
-	{% else %}
-			<li class="nav-item active">
-                <a class="nav-link" href="#">{{m.title}}</a>
-            </li>
-	{% endif %}
 {% endfor %}
+               {% if request.user.is_authenticated %}
+               <li class="nav-link"> {{user.username}}
+                 <a href="/accounts/logout">Выйти</a>
+             </li>
+               {% else %}
+             <li class="nav-link">
+                 <a href="/accounts/signup">Регистация</a>|<a href="/accounts/login">Войти</a>
+             </li>
+               {% endif %}
 			</ul>
 			<div class="clear"></div>
 		</div>

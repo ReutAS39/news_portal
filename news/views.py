@@ -18,7 +18,7 @@ from .forms import PostForm
 #menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'create'},
-        {'title': 'Войти', 'url_name': 'login'},
+        {'title': 'Добавить новость', 'url_name': 'create'},
 ]
 
 @login_required
@@ -78,8 +78,7 @@ class PostsList(ListView):
         context['next_sale'] = None
         context['menu'] = menu
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
-        context['is_not_common'] = not self.request.user.groups.filter(name='common').exists()
-        context['get_category'] = Category.objects.all()
+       # context['get_category'] = Category.objects.all()
         context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
 
@@ -162,3 +161,14 @@ class PostDelete(LoginRequiredMixin,DeleteView):
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news_list')
 
+
+class CategoryList(ListView):
+    model = Post
+    template_name = 'news_list.html'
+    context_object_name = 'news_list'
+
+    def get_queryset(self):
+#        queryset = super().get_queryset()
+ #       self.filterset = PostFilter(self.request.GET, queryset)
+        return Post.objects.filter(category=self.kwargs['pk'])
+#return self.filterset.qs

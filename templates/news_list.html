@@ -12,25 +12,26 @@ News_list
 
 <!-- В контенте на странице мы выводим все товары -->
 {% block content %}
-{% if auth %}
-<h3>Страница авторизованного пользователя {{request.user.username}}</h3>
-<!--<div> Здесь может содержаться персональная информация для каждого пользователя </div>-->
-<button> <a href="../accounts/logout/">Выйти</a> </button>
-{% endif %}
 {% if is_not_author and auth%}
 <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
-<h2>Все статьи</h2>
    <h4>{{ news_count }}</h4>
     <div class="col">
        <div class="news">
-           <a href="/news" title="разделы новостей">Категории:</a> |
-           {% for c in get_category %}
-                <a href="?category={{c.id}}"
+           <a href="/news" title="разделы новостей">Категории:</a>
+           {% get_categories as categories %}
+           {% for c in categories %}
+            {% if c.pk == categories_selected %}
+           <li class="selected">{{c.name}}</li>
+           {% else %}
+            <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
+{% endif %}
+
+                <!--<a href="?category={{c.id}}"
                 {% if request.GET.category == c.id|title %}
                     class="bold"
                 {% endif %}
-                >{{ c.name }}</a> |
+                >{{ c.name }}</a> |-->
            {% endfor %}
        </div>
     </div>

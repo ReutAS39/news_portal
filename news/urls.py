@@ -1,6 +1,6 @@
 from django.urls import path
 # Импортируем созданное нами представление
-from .views import PostsList, PostDetail, PostCreate, PostUpdate, PostDelete  # UserDetail, UserUpdate
+from .views import PostsList, PostDetail, PostCreate, PostUpdate, PostDelete, CategoryList
 from .views import upgrade_me, subscribe_me
 from django.views.decorators.cache import cache_page
 
@@ -19,4 +19,5 @@ urlpatterns = [
    path('articles/<int:pk>/delete', PostDelete.as_view(), name='articles_delete'),
    path('upgrade/', upgrade_me, name='upgrade'),
    path('subscribe/<int:pk>', subscribe_me, name='subscribe'),
+   path('category/<int:pk>', CategoryList.as_view(), name='category'),
 ]
