@@ -22,7 +22,7 @@ News_list
            {% get_categories as categories %}
            {% for c in categories %}
             {% if c.pk == categories_selected %}
-           <li class="selected">{{c.name}}</li>
+           <li class="bold">{{c.name}}</li>
            {% else %}
             <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
 {% endif %}

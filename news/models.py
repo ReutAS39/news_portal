@@ -28,7 +28,7 @@ class Category(models.Model):
     subscribers = models.ManyToManyField(User)
 
     def __str__(self):
-        return self.name.title()
+        return self.name
 
     def get_absolute_url(self):
         return reverse('category', args=[str(self.pk)]) ## TO DO

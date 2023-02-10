@@ -76,6 +76,8 @@ class PostsList(ListView):
         # Добавим ещё одну пустую переменную,
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         context['next_sale'] = None
+        context['title'] = 'Главная страница'
+        context['cat_selected'] = 0
         context['menu'] = menu
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
        # context['get_category'] = Category.objects.all()
@@ -177,6 +179,8 @@ class CategoryList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 #        context['filterset'] = self.filterset
+        context['title'] = 'Категория - ' + str(context['news_list'][0].category.get())
         context['menu'] = menu
+        context['cat_selected'] = context['news_list'][0].category.get()
         context['news_count'] = f'Количество статей: {Post.objects.filter(category=self.kwargs["pk"]).count()}'
         return context
