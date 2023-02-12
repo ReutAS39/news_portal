@@ -1,5 +1,5 @@
 from django import template
-from news.models import Category
+from news.models import Category, User
 
 register = template.Library()
 
@@ -15,3 +15,7 @@ def url_replace(context, **kwargs):
 @register.simple_tag
 def get_categories():
     return Category.objects.all()
+
+# @register.simple_tag
+# def get_sybscribers():
+#     return User.category_set.all()

@@ -21,7 +21,7 @@ News_list
            <a href="/news" title="разделы новостей">Категории:</a>
            {% get_categories as categories %}
            {% for c in categories %}
-            {% if c.pk == categories_selected %}
+            {% if c.pk == cat_selected %}
            <li class="bold">{{c.name}}</li>
            {% else %}
             <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
@@ -29,15 +29,17 @@ News_list
            {% endfor %}
        </div>
     </div>
-{% if request.user.username and request.GET.category %}
-               <br><a href="/news/subscribe/{{request.GET.category}}"><b>Подписаться на новости раздела</b></a>
+{% if request.user.username and cat_selected not in cat_subscriber %}
+               <br><a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться на новости раздела</b></a>
 {% endif%}
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
        {{ filterset.form.as_p }}
        {# Добавим кнопку отправки данных формы #}
+{% if not cat_selected %}
        <input type="submit" value="Найти" />
+       {% endif%}
    </form>
     <hr>
    {% if news_list %}

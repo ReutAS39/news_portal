@@ -15,7 +15,7 @@ from .filters import PostFilter
 from .forms import PostForm
 #from .tasks import hello, printer, mass_sender
 
-#menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'create'},
         {'title': 'Добавить новость', 'url_name': 'create'},
@@ -80,7 +80,6 @@ class PostsList(ListView):
         context['cat_selected'] = 0
         context['menu'] = menu
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
-       # context['get_category'] = Category.objects.all()
         context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
 
@@ -183,4 +182,5 @@ class CategoryList(ListView):
         context['menu'] = menu
         context['cat_selected'] = context['news_list'][0].category.get()
         context['news_count'] = f'Количество статей: {Post.objects.filter(category=self.kwargs["pk"]).count()}'
+        context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         return context
