@@ -17,5 +17,5 @@ def get_categories():
     return Category.objects.all()
 
 # @register.simple_tag
-# def get_sybscribers():
+# def get_subscribers():
 #     return User.category_set.all()

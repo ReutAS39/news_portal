@@ -37,9 +37,7 @@ News_list
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
        {{ filterset.form.as_p }}
        {# Добавим кнопку отправки данных формы #}
-{% if not cat_selected %}
        <input type="submit" value="Найти" />
-       {% endif%}
    </form>
     <hr>
    {% if news_list %}

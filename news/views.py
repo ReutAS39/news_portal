@@ -6,20 +6,21 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 
 
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
-#from .tasks import hello, printer, mass_sender
+# from .tasks import hello, printer, mass_sender
 
 
-menu = [{'title': 'О сайте', 'url_name': 'about'},
-        {'title': 'Добавить статью', 'url_name': 'create'},
-        {'title': 'Добавить новость', 'url_name': 'create'},
-]
+menu = [
+        {'title': 'Добавить статью', 'url_name': 'articles_create'},
+        {'title': 'Добавить новость', 'url_name': 'news_create'},
+        ]
+
 
 @login_required
 def upgrade_me(request):
@@ -31,13 +32,14 @@ def upgrade_me(request):
 
 
 def subscribe_me(request, pk):
-     user = request.user
-     category = Category.objects.get(pk=pk)
-     category.subscribers.add(user)
+    user = request.user
+    category = Category.objects.get(pk=pk)
+    category.subscribers.add(user)
 #
 #     message = "Вы подписались на рссылку новостей категории "
 #     return render(request, 'subscribe.html', {'category': category, 'message': message})
-     return redirect('/news')
+    return redirect('/news')
+
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -49,7 +51,7 @@ class PostsList(ListView):
     template_name = 'news_list.html'
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
-    #context_object_name = 'posts'
+    # context_object_name = 'posts'
     context_object_name = 'news_list'
     paginate_by = 10  # вот так мы можем указать количество записей на странице
 
@@ -69,7 +71,7 @@ class PostsList(ListView):
         # и вызываем у них метод get_context_data с теми же аргументами, что и были переданы нам.
         # В ответе мы должны получить словарь.
         context = super().get_context_data(**kwargs)
-        context['news_count'] = f'Количество статей: {Post.objects.count()}'
+        context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         # чтобы на её примере рассмотреть работу ещё одного фильтра.
         # Добавляем в контекст объект фильтрации.
         context['filterset'] = self.filterset
@@ -82,6 +84,7 @@ class PostsList(ListView):
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
+
 
 class PostDetail(DetailView):
     # Модель всё та же, но мы хотим получать информацию по отдельному товару
@@ -101,6 +104,7 @@ class PostDetail(DetailView):
 
         return context
 
+
 class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     # Указываем нашу разработанную форму
@@ -108,7 +112,14 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Post
     # и новый шаблон, в котором используется форма.
     template_name = 'news_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu'] = menu
+
+        return context
 # Добавляем представление для изменения товара.
+
     def form_valid(self, form):
         post = form.save(commit=False)
         path = self.request.META['PATH_INFO']
@@ -121,8 +132,8 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         # send_mail(
         #     subject=post.article,  # имя клиента и дата записи будут в теме для удобства
         #     message=post.text,  # сообщение с кратким описанием проблемы
-        #     from_email='CamcoHKappacko@yandex.ru', # здесь указываете почту, с которой будете отправлять (об этом попозже)
-        #     recipient_list=['chillyvilly@mailtest.html.ru']  # здесь список получателей. Например, секретарь, сам врач и т. д.
+        #     from_email='CamcoHKappacko@yandex.ru', # здесь указываете почту, с которой будете отправлять
+        #     recipient_list=['chillyvilly@mailtest.html.ru']  # здесь список получателей.
         # )
         # получаем наш html
         # html_content = render_to_string(
@@ -143,11 +154,12 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         #
         # msg.send()  # отсылаем
 
-###        mass_sender.delay(post.id)
+#        mass_sender.delay(post.id)
 
         return super().form_valid(form)
 
     permission_required = ('news.change_post',)
+
 
 class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
@@ -157,10 +169,23 @@ class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     permission_required = ('news.add_post',)
 
-class PostDelete(LoginRequiredMixin,DeleteView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu'] = menu
+
+        return context
+
+
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('news_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu'] = menu
+
+        return context
 
 
 class CategoryList(ListView):
@@ -169,18 +194,17 @@ class CategoryList(ListView):
     context_object_name = 'news_list'
     paginate_by = 5  # вот так мы можем указать количество записей на странице
 
-    def get_queryset(self):
+    def get_queryset(self, **kwargs):
         queryset = super().get_queryset()
-        self.filterset = PostFilter(self.request.GET, queryset)
-        return Post.objects.filter(category=self.kwargs['pk'])
- #       return self.filterset.qs
+        self.filterset = PostFilter(self.request.GET, queryset.filter(category=self.kwargs['pk']))
+        return self.filterset.qs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-#        context['filterset'] = self.filterset
+        context['filterset'] = self.filterset
         context['title'] = 'Категория - ' + str(context['news_list'][0].category.get())
         context['menu'] = menu
         context['cat_selected'] = context['news_list'][0].category.get()
-        context['news_count'] = f'Количество статей: {Post.objects.filter(category=self.kwargs["pk"]).count()}'
+        context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         return context

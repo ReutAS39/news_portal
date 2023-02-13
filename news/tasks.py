@@ -1,17 +1,17 @@
 from celery import shared_task
-#import time
+# import time
 import datetime
 
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-#from django.db.models.signals import m2m_changed, post_save
-#from django.dispatch import receiver
+# from django.db.models.signals import m2m_changed, post_save
+# from django.dispatch import receiver
 
 from news_portal import settings
-from .models import Post, Category #, PostCategory
+from .models import Post, Category  # , PostCategory
 
-#from news.signals import mass_sender
-#from django.core.mail import send_mail
+# from news.signals import mass_sender
+# from django.core.mail import send_mail
 
 # @shared_task
 # def hello():
@@ -48,11 +48,12 @@ from .models import Post, Category #, PostCategory
 #
 #             send_mail(
 #                 subject=f'{instance.article}',
-#                 message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе!!{instance.text[:200]}',
+#                 message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе{instance.text[:200]}',
 #                 from_email='CamcoHKappacko@yandex.ru',
 #                 recipient_list=subscribers_email_list,
 #                 html_message=html_content
 #             )
+
 
 @shared_task
 def weekly_newsletter():
