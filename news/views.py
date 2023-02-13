@@ -6,11 +6,11 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 
 
-from .models import Post, Category
+from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm
 # from .tasks import hello, printer, mass_sender
@@ -28,6 +28,7 @@ def upgrade_me(request):
     author_group = Group.objects.get(name='authors')
     if not request.user.groups.filter(name='authors').exists():
         author_group.user_set.add(user)
+       # Author.objects.create(user=User.objects.get(username=user)) # Добавление пользоаателя в Authors
     return redirect('/news')
 
 
@@ -207,4 +208,6 @@ class CategoryList(ListView):
         context['cat_selected'] = context['news_list'][0].category.get()
         context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
+        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
+        context['auth'] = self.request.user.groups.filter(name='common').exists()
         return context
