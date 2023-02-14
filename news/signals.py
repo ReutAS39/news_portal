@@ -7,34 +7,37 @@ from django.core.mail import EmailMultiAlternatives
 from news_portal import settings
 
 
-@receiver(m2m_changed, sender=PostCategory)
-def mass_sender(sender, instance, action, **kwargs):
-    if action == "post_add":
-        categories = instance.category.all()
-        subscribers = []
-        for category in categories:
-            subscribers += category.subscribers.all()
+# @receiver(m2m_changed, sender=PostCategory)
+# def mass_sender(sender, instance, action, **kwargs):
+#     if action == "post_add":
+#         categories = instance.category.all()
+#         subscribers = []
+#         for category in categories:
+#             subscribers += category.subscribers.all()
+#
+#         subscribers_email_list = []
+#         for subscriber in subscribers:
+#             subscribers_email_list.append(subscriber.email)
+#
+#         if subscribers_email_list:
+#             html_content = render_to_string(
+#                     'mailtest.html',
+#                     {
+#                         'instance': instance,
+#                         'subscriber': subscriber,
+#                         'link': f'{settings.SITE_URL}/news/{instance.id}',
+#                     })
+#
+#             send_mail(
+#                 subject=f'{instance.article}',
+#                 message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе!!{instance.text[:200]}',
+#                 from_email='CamcoHKappacko@yandex.ru',
+#                 recipient_list=subscribers_email_list,
+#                 html_message=html_content
+#             )
 
-        subscribers_email_list = []
-        for subscriber in subscribers:
-            subscribers_email_list.append(subscriber.email)
 
-        if subscribers_email_list:
-            html_content = render_to_string(
-                    'mailtest.html',
-                    {
-                        'instance': instance,
-                        'subscriber': subscriber,
-                        'link': f'{settings.SITE_URL}/news/{instance.id}',
-                    })
 
-            send_mail(
-                subject=f'{instance.article}',
-                message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе!!{instance.text[:200]}',
-                from_email='CamcoHKappacko@yandex.ru',
-                recipient_list=subscribers_email_list,
-                html_message=html_content
-            )
 
             # #получаем наш html
             # html_content = render_to_string(

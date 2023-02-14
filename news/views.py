@@ -66,6 +66,7 @@ class PostsList(ListView):
         self.filterset = PostFilter(self.request.GET, queryset)
         # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
+        #return Post.objects.filter(category=None)
 
     def get_context_data(self, **kwargs):
         # С помощью super() мы обращаемся к родительским классам
@@ -102,7 +103,9 @@ class PostDetail(DetailView):
         # В ответе мы должны получить словарь.
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
-
+        context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
+        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+        context['cat_selected'] = context['news'].category.get()
         return context
 
 
@@ -191,6 +194,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 
 class CategoryList(ListView):
     model = Post
+    ordering = '-time_in'
     template_name = 'news_list.html'
     context_object_name = 'news_list'
     paginate_by = 5  # вот так мы можем указать количество записей на странице

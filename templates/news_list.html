@@ -22,16 +22,17 @@ News_list
            {% get_categories as categories %}
            {% for c in categories %}
             {% if c == cat_selected %}
-           <li class="bold">{{c.name}}</li>
+           <li class="bold">{{c.name}}
+               {% if request.user.username and cat_selected not in cat_subscriber %}
+<a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
+{% endif%}</li>
            {% else %}
             <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
 {% endif %}
            {% endfor %}
        </div>
     </div>
-{% if request.user.username and cat_selected not in cat_subscriber %}
-<a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться на новости раздела {{cat_selected.name}}</b></a>
-{% endif%}
+
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
@@ -59,7 +60,7 @@ News_list
                 полям объекта модели. Например, здесь мы выводим имя,
                 в следующем столбце описание, и т.д.  -->
                <!--<td>{{ news.article|censor }}</td>-->
-               <td><a href="{{ news.id }}">{{ news.article|censor }}</a></td>
+               <td><a href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></td>
                <td>{{ news.time_in|date:'d M Y' }}</td>
                <td>{{ news.text|censor|truncatewords:20}}</td>
            </tr>
