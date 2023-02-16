@@ -1,7 +1,8 @@
 from datetime import datetime
 # Импортируем класс, который говорит нам о том,
 # что в этом представлении мы будем выводить список объектов из БД
-from django.shortcuts import redirect, render, reverse
+from django.contrib import messages
+from django.shortcuts import redirect, render, reverse, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -21,6 +22,10 @@ menu = [
         {'title': 'Добавить новость', 'url_name': 'news_create'},
         ]
 
+positions = (
+    ('PO', 'articles'),
+    ('NE', 'news')
+)
 
 @login_required
 def upgrade_me(request):
@@ -126,7 +131,7 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     def form_valid(self, form):
         post = form.save(commit=False)
-        path = self.request.META['PATH_INFO']
+        path = self.request.path
 
         if path == '/news/articles/create/':
             post.position = 'PO'
@@ -159,7 +164,7 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         # msg.send()  # отсылаем
 
 #        mass_sender.delay(post.id)
-
+        messages.success(self.request, 'Статья успешно добавлена.')
         return super().form_valid(form)
 
     permission_required = ('news.change_post',)
@@ -177,6 +182,14 @@ class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
 
+        current_post = context['post']
+        path = self.request.path
+        if 'articles' in path:
+            pos = 'PO'
+        else:
+            pos = 'NE'
+        get_object_or_404(Post.objects.filter(position=pos), pk=current_post.pk)
+
         return context
 
 
@@ -188,6 +201,14 @@ class PostDelete(LoginRequiredMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
+
+        current_post = context['post']
+        path = self.request.path
+        if 'articles' in path:
+            pos = 'PO'
+        else:
+            pos = 'NE'
+        get_object_or_404(Post.objects.filter(position=pos), pk=current_post.pk)
 
         return context
 
