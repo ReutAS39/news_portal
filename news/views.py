@@ -22,10 +22,6 @@ menu = [
         {'title': 'Добавить новость', 'url_name': 'news_create'},
         ]
 
-positions = (
-    ('PO', 'articles'),
-    ('NE', 'news')
-)
 
 @login_required
 def upgrade_me(request):
@@ -33,7 +29,7 @@ def upgrade_me(request):
     author_group = Group.objects.get(name='authors')
     if not request.user.groups.filter(name='authors').exists():
         author_group.user_set.add(user)
-       # Author.objects.create(user=User.objects.get(username=user)) # Добавление пользоаателя в Authors
+      #  Author.objects.create(user=User.objects.get(username=user)) # Добавление пользоаателя в Authors
     return redirect('/news')
 
 
@@ -71,7 +67,7 @@ class PostsList(ListView):
         self.filterset = PostFilter(self.request.GET, queryset)
         # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
-        #return Post.objects.filter(category=None)
+        # return Post.objects.filter(category=None)
 
     def get_context_data(self, **kwargs):
         # С помощью super() мы обращаемся к родительским классам
@@ -96,8 +92,7 @@ class PostsList(ListView):
 class PostDetail(DetailView):
     # Модель всё та же, но мы хотим получать информацию по отдельному товару
     model = Post
-    # Используем другой шаблон — post.html
-#    template_name = 'post.html'
+    # Используем другой шаблон — news.html
     template_name = 'news.html'
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
@@ -108,9 +103,11 @@ class PostDetail(DetailView):
         # В ответе мы должны получить словарь.
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
+        context['title'] = f"{context['news'].article}"
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()
         context['cat_selected'] = context['news'].category.get()
+
         return context
 
 
@@ -125,6 +122,7 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
+        context['title'] = 'Создание статьи'
 
         return context
 # Добавляем представление для изменения товара.
@@ -181,6 +179,7 @@ class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
+        context['title'] = f"Редактирование статьи {context['post'].article}"
 
         current_post = context['post']
         path = self.request.path
@@ -201,6 +200,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
+        context['title'] = f"Удаление статьи {context['post'].article}"
 
         current_post = context['post']
         path = self.request.path

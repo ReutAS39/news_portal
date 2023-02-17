@@ -36,7 +36,7 @@ class Category(models.Model):
 
 
 POSITION = (
-    ('PO', 'Post'),
+    ('PO', 'Article'),
     ('NE', 'News')
 )
 
@@ -47,7 +47,7 @@ class Post(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)  # связь «один ко многим» с моделью Author;
     position = models.CharField(max_length=255, choices=POSITION)  # поле с выбором — «статья» или «новость»;
     time_in = models.DateTimeField(auto_now_add=True)  # автоматически добавляемая дата и время создания;
-    category = models.ManyToManyField(Category, through='PostCategory')  # связь с моделью Category (с дополнительной моделью PostCategory);
+    category = models.ManyToManyField(Category, through='PostCategory')
     article = models.CharField(max_length=255)  # заголовок статьи/новости;
     text = models.TextField()  # текст статьи/новости;
     rating = models.FloatField(default=0.0)  # рейтинг статьи/новости.
@@ -68,6 +68,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('news', args=[str(self.pk)])
+
+    def get_position(self):
+        if self.position == "PO":
+            return 'articles'
+        else:
+            return 'news'
 
 
 class PostCategory(models.Model):

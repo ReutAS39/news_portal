@@ -1,7 +1,9 @@
 from django import template
 
+
 class CensorException(Exception):
     pass
+
 
 register = template.Library()
 
@@ -10,6 +12,7 @@ register = template.Library()
 # что это именно фильтр для шаблонов, а не простая функция.
 
 WORDS = ['редиска', 'чепухи', 'reebok', 'текст']
+
 
 @register.filter()
 def censor(value):

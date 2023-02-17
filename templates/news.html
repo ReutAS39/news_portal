@@ -3,17 +3,12 @@
 
 {% load custom_filters %}
 
-<!-- Название у нас будет Product -->
-{% block title %}
-News
-{% endblock title %}
-
 <!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
 {% block content %}
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
         {{ message }}
     </li>
@@ -27,9 +22,8 @@ News
 <li><a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a></li>
 {% endif%}</li>
                {% if is_author %}
-<a href="/news/{{news.position}}/{{news.id}}/edit"><b>Редактировать</b></a>
-<a href="/news/{{news.position}}/{{news.id}}/delete"><b>Удалить</b></a>
+<a href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
+<a href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
 {% endif%}</li>
 {% endblock content %}
 
-{% url m.url_name%}
