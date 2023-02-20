@@ -8,7 +8,7 @@
 
 <!-- В контенте на странице мы выводим все товары -->
 {% block content %}
-{% if is_not_author and auth%}
+{% if request.user.username and not is_author %}
 <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
    <h4>{{ news_count }}</h4>

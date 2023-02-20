@@ -84,8 +84,8 @@ class PostsList(ListView):
         context['title'] = 'Главная страница'
         context['cat_selected'] = 0
         context['menu'] = menu
-        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
-        context['auth'] = self.request.user.groups.filter(name='common').exists()
+        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+
         return context
 
 
