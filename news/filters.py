@@ -9,7 +9,7 @@ from .models import Post
 
 class PostFilter(FilterSet):
     # выводит виджет календаря при выборе даты за счёт атрибуты widget
-    time_in = DateFilter(lookup_expr='gt', widget=DateInput(format='%d-%m-%Y', attrs={'type': 'date'}))
+    time_in = DateFilter(lookup_expr='gt', widget=DateInput(format='%d/%m/%Y', attrs={'type': 'date'}))
 
     class Meta:
         model = Post

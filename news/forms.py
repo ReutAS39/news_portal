@@ -14,12 +14,14 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['author'].empty_label = 'Выберите автора'
+        self.fields['position'].initial = 'NE'
 
     class Meta:
         model = Post
         fields = [
            'author',
            'category',
+           'position',
            'article',
            'text',
         ]
@@ -31,7 +33,8 @@ class PostForm(forms.ModelForm):
         labels = {
            'text': _('Текст'),
            'author': _('Автор:'),
-           'category': _('Категории:'),
+           'category': _('Категория:'),
+           'position': _('Статья/Новость:'),
         }
 
     def clean_text(self):

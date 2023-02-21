@@ -29,7 +29,7 @@ def upgrade_me(request):
     author_group = Group.objects.get(name='authors')
     if not request.user.groups.filter(name='authors').exists():
         author_group.user_set.add(user)
-      #  Author.objects.create(user=User.objects.get(username=user)) # Добавление пользоаателя в Authors
+    #  Author.objects.create(user=User.objects.get(username=user)) # Добавление пользоаателя в Authors
     return redirect('/news')
 
 
@@ -233,6 +233,5 @@ class CategoryList(ListView):
         context['cat_selected'] = context['news_list'][0].category.get()
         context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
-        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
-        context['auth'] = self.request.user.groups.filter(name='common').exists()
+        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
         return context
