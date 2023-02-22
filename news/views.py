@@ -33,6 +33,7 @@ def upgrade_me(request):
     return redirect('/news')
 
 
+@login_required
 def subscribe_me(request, pk):
     user = request.user
     category = Category.objects.get(pk=pk)
@@ -221,6 +222,7 @@ class CategoryList(ListView):
     paginate_by = 5  # вот так мы можем указать количество записей на странице
 
     def get_queryset(self, **kwargs):
+        self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
         queryset = super().get_queryset()
         self.filterset = PostFilter(self.request.GET, queryset.filter(category=self.kwargs['pk']))
         return self.filterset.qs
@@ -234,4 +236,5 @@ class CategoryList(ListView):
         context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+
         return context

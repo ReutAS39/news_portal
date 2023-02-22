@@ -8,10 +8,10 @@ from news_portal import settings
 
 
 # @receiver(m2m_changed, sender=PostCategory)
-# def mass_sender(sender, instance, action, **kwargs):
-#     if action == "post_add":
+# def mass_sender(sender, instance, **kwargs):
+#     if kwargs['action'] == "post_add":
 #         categories = instance.category.all()
-#         subscribers = []
+#         subscribers: list[str] = []
 #         for category in categories:
 #             subscribers += category.subscribers.all()
 #

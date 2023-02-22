@@ -1,12 +1,10 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
-
 {% load custom_filters %}
 
 {# Импортируем модуль с нашим тегом #}
 {% load custom_tags %}
 
-<!-- В контенте на странице мы выводим все товары -->
 {% block content %}
 {% if request.user.username and not is_author %}
 <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
@@ -20,8 +18,8 @@
             {% if c == cat_selected %}
            <li class="bold">{{c.name}}
                {% if request.user.username and cat_selected not in cat_subscriber %}
-<a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
-{% endif%}</li>
+<p class="text-center"> <a href="/news/subscribe/{{cat_selected.id}}"  class="btn btn-secondary btn-sm">Подписаться!</a></p>
+                {% endif%}</li>
            {% else %}
             <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
 {% endif %}
