@@ -230,9 +230,9 @@ class CategoryList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
-        context['title'] = 'Категория - ' + str(context['news_list'][0].category.get())
+        #context['title'] = 'Категория - ' + str(context['news_list'][0].category.get())
         context['menu'] = menu
-        context['cat_selected'] = context['news_list'][0].category.get()
+        #context['cat_selected'] = context['news_list'][0].category.get()
         context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()

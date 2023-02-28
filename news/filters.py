@@ -19,3 +19,9 @@ class PostFilter(FilterSet):
            # exact выбирает все объекты моделей, в которых свойство равно определенному значению.
            'author': ['exact'],
                   }
+
+    def __init__(self, *args, **kwargs):
+        super(PostFilter, self).__init__(*args, **kwargs)
+        self.filters['article__icontains'].label = "Заголовок"  # не меняется
+        self.filters['author'].label = "Автор"
+        self.filters['time_in'].label = "Дата"
