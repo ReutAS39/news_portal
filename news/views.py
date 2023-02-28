@@ -4,7 +4,7 @@ from datetime import datetime
 from django.contrib import messages
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, resolve
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
@@ -229,11 +229,13 @@ class CategoryList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        category_get = Category.objects.get(pk=resolve(self.request.path_info).kwargs['pk'])
         context['filterset'] = self.filterset
-        #context['title'] = 'Категория - ' + str(context['news_list'][0].category.get())
+        context['title'] = 'Категория - ' + str(category_get)
         context['menu'] = menu
-        #context['cat_selected'] = context['news_list'][0].category.get()
-        context['news_count'] = f'Количество статей: {self.filterset.qs.count()}'
+        # context['cat_selected'] = context['news_list'][0].category.get()
+        context['cat_selected'] = category_get
+        context['news_count'] = f'Количество статей в категории {category_get}: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()
 
