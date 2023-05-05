@@ -19,11 +19,13 @@
 <h4>{{ news.time_in|date:'d M Y' }}</h4>
 <p>{{ news.text|censor }}</p>
                {% if request.user.username and cat_selected not in cat_subscriber  %}
-<li><a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a></li>
+    <li>
+        <a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a></li>
 {% endif%}</li>
                {% if is_author %}
 <a href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
 <a href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
-{% endif%}</li>
+{% endif%}
+    </li>
 {% endblock content %}
 

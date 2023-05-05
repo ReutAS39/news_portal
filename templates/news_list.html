@@ -10,22 +10,25 @@
 <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
    <h4>{{ news_count }}</h4>
-    <div class="col">
-       <div class="news">
-           <a href="/news" title="Разделы новостей">Категории:</a>
-           {% get_categories as categories %}
-           {% for c in categories %}
-            {% if c == cat_selected %}
+       <div class="category_list">
+           <a href="{% url 'news_list'%}" title="Разделы новостей">Категории:</a>
+{% get_categories as categories %}
+{% for c in categories %}
+{% if c == cat_selected %}
            <li class="bold">{{c.name}}
-               {% if request.user.username and cat_selected not in cat_subscriber %}
-<p class="text-center"> <a href="/news/subscribe/{{cat_selected.id}}"  class="btn btn-secondary btn-sm">Подписаться!</a></p>
-                {% endif%}</li>
+    {% if request.user.username and cat_selected not in cat_subscriber %}
+    <p class="text-center">
+        <a href="/news/subscribe/{{cat_selected.id}}"  class="btn btn-secondary btn-sm">Подписаться!</a>
+    </p>
+                {% endif%}
+           </li>
            {% else %}
-            <li><a href={{c.get_absolute_url}}>{{c.name}}</a></li>
+           <li>
+               <a href={{c.get_absolute_url}}>{{c.name}}</a>
+           </li>
 {% endif %}
            {% endfor %}
        </div>
-    </div>
 
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">
@@ -58,6 +61,7 @@
                <td>{{ news.time_in|date:'d M Y' }}</td>
                <td>{{ news.text|censor|truncatewords:20}}</td>
            </tr>
+
            {% endfor %}
 
        </table>
