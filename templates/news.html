@@ -3,29 +3,19 @@
 
 {% load custom_filters %}
 
-<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+
 {% block content %}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-        {{ message }}
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
 <h3>{{ news.article|censor }}</h3>
 <h4>{{ news.time_in|date:'d M Y' }}</h4>
 <p>{{ news.text|censor }}</p>
-               {% if request.user.username and cat_selected not in cat_subscriber  %}
-    <li>
-        <a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a></li>
-{% endif%}</li>
-               {% if is_author %}
-<a href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
-<a href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
+{% if request.user.username and cat_selected not in cat_subscriber  %}
+    <a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
+<br>
 {% endif%}
-    </li>
+
+{% if is_author %}
+    <a href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
+    <a href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
+{% endif%}
 {% endblock content %}
 
