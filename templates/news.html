@@ -7,7 +7,7 @@
 {% block content %}
 <h3>{{ news.article|censor }}</h3>
 <h4>{{ news.time_in|date:'d M Y' }}</h4>
-<p>{{ news.text|censor }}</p>
+<p id="zzz">{{ news.text|censor }}</p>
 {% if request.user.username and cat_selected not in cat_subscriber  %}
     <a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
 <br>
