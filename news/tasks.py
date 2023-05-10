@@ -49,7 +49,7 @@ from .models import Post, Category  # , PostCategory
 #             send_mail(
 #                 subject=f'{instance.article}',
 #                 message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе{instance.text[:200]}',
-#                 from_email='CamcoHKappacko@yandex.ru',
+#                 from_email='***@yandex.ru',
 #                 recipient_list=subscribers_email_list,
 #                 html_message=html_content
 #             )
@@ -76,7 +76,7 @@ def weekly_newsletter():
     msg = EmailMultiAlternatives(
         subject='Статьи за неделю',
         body='',
-        from_email='CamcoHKappacko@yandex.ru',
+        from_email='***@yandex.ru',
         to=subscribers,
     )
     msg.attach_alternative(html_content, 'text/html')

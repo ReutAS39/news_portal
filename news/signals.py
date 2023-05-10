@@ -31,7 +31,7 @@ from news_portal import settings
 #             send_mail(
 #                 subject=f'{instance.article}',
 #                 message=f'Здравствуй {subscriber.username} Новая статья в твоём любимом разделе!!{instance.text[:200]}',
-#                 from_email='CamcoHKappacko@yandex.ru',
+#                 from_email='***@yandex.ru',
 #                 recipient_list=subscribers_email_list,
 #                 html_message=html_content
 #             )
@@ -51,7 +51,7 @@ from news_portal import settings
             # msg = EmailMultiAlternatives(
             #     subject=f'Hi {subscriber.username} we have some news for you!',
             #     body=f'{instance.text[:200]}',  # это то же, что и message
-            #     from_email='CamcoHKappacko@yandex.ru',
+            #     from_email='***@yandex.ru',
             #     to=subscribers_email_list,  # это то же, что и recipients_list
             # )
             # msg.attach_alternative(html_content, "text/html")  # добавляем html

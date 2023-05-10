@@ -131,8 +131,8 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         # send_mail(
         #     subject=post.article,  # имя клиента и дата записи будут в теме для удобства
         #     message=post.text,  # сообщение с кратким описанием проблемы
-        #     from_email='CamcoHKappacko@yandex.ru', # здесь указываете почту, с которой будете отправлять
-        #     recipient_list=['chillyvilly@mailtest.html.ru']  # здесь список получателей.
+        #     from_email='***@yandex.ru', # здесь указываете почту, с которой будете отправлять
+        #     recipient_list=['***@mailtest.html.ru']  # здесь список получателей.
         # )
         # получаем наш html
         # html_content = render_to_string(
@@ -146,8 +146,8 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         # msg = EmailMultiAlternatives(
         #     subject=f'{post.article}',
         #     body=post.text,  # это то же, что и message
-        #     from_email='CamcoHKappacko@yandex.ru',
-        #     to=['chillyvilly@mail.ru'],  # это то же, что и recipients_list
+        #     from_email='C***@yandex.ru',
+        #     to=['***@mail.ru'],  # это то же, что и recipients_list
         # )
         # msg.attach_alternative(html_content, "text/html")  # добавляем html
         #
@@ -210,7 +210,7 @@ class CategoryList(ListView):
     ordering = '-time_in'
     template_name = 'news_list.html'
     context_object_name = 'news_list'
-    paginate_by = 5  # вот так мы можем указать количество записей на странице
+    paginate_by = 5
 
     def get_queryset(self, **kwargs):
         self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
@@ -224,10 +224,10 @@ class CategoryList(ListView):
         context['filterset'] = self.filterset
         context['title'] = 'Категория - ' + str(category_get)
         context['menu'] = menu
-        # context['cat_selected'] = context['news_list'][0].category.get()
         context['cat_selected'] = category_get
         context['news_count'] = f'Количество статей в категории {category_get}: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+
 
         return context
