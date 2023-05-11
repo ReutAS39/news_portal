@@ -21,12 +21,13 @@
 <!--                   aria-label="Toggle navigation">-->
 <!--               <span class="navbar-toggler-icon"></span>-->
 <!--           </button>-->
-           <div class="collapse navbar-collapse" id="navbarResponsive">
-               <ul class="navbar-nav ml-auto">
 {% block mainmenu %}
 {% for m in menu %}
-                   <li class="nav-item active">
-                       <a class="nav-link" href="{% url m.url_name%}">{{m.title}}</a>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                   <li class="nav-item">
+                       <a class="nav-link" aria-current="page" href="{% url m.url_name%}">{{m.title}}</a>
                    </li>
 {% endfor %}
 {% if request.user.is_authenticated %}
@@ -37,14 +38,13 @@
                    <li class="nav-link">
                      <a href="/accounts/signup">Регистация</a> | <a href="/accounts/login">Войти</a>
                    </li>
-{% endif %}
-
-<!--                <div class="clear"></div>-->
-{% endblock mainmenu %}
                </ul>
            </div>
        </div>
+{% endif %}
+{% endblock mainmenu %}
     </nav>
+
         <!-- Page content-->
     <div class="container">
         <div class="row">

@@ -53,7 +53,7 @@ class PostsList(ListView):
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     context_object_name = 'news_list'
-    paginate_by = 10  # вот так мы можем указать количество записей на странице
+    paginate_by = 5  # вот так мы можем указать количество записей на странице
 
     # Переопределяем функцию получения списка товаров
     def get_queryset(self):
@@ -228,6 +228,4 @@ class CategoryList(ListView):
         context['news_count'] = f'Количество статей в категории {category_get}: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         context['is_author'] = self.request.user.groups.filter(name='authors').exists()
-
-
         return context
