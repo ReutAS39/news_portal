@@ -2,10 +2,11 @@ from django import forms
 from django.core.exceptions import ValidationError
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
+from django.forms import Textarea
 
 from django.utils.translation import gettext_lazy as _
 
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -52,3 +53,13 @@ class BasicSignupForm(SignupForm):
         common_group = Group.objects.get(name='common')
         common_group.user_set.add(user)
         return user
+
+
+class CommentForm(forms.ModelForm):
+    text = forms.CharField(max_length=255, label='Текст', widget=Textarea(attrs={"cols": 60, "rows": 4}))
+
+    class Meta:
+        model = Comment
+        fields = [
+           'text',
+        ]

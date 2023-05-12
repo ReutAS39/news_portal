@@ -1,0 +1,274 @@
+12/May/2023 09:19:17   ERROR   Internal Server Error: /news/97   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'AttributeError'>, AttributeError("'PostDetail' object has no attribute 'get_form'"), <traceback object at 0x000002499FE06640>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 109, in post
+    form = self.get_form()
+AttributeError: 'PostDetail' object has no attribute 'get_form'
+12/May/2023 09:19:17   ERROR   "POST /news/97 HTTP/1.1" 500 84017   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:24:16   ERROR   Internal Server Error: /news/97   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'AttributeError'>, AttributeError("'PostDetail' object has no attribute 'get_form'"), <traceback object at 0x0000011C51289940>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 109, in post
+    form = self.get_form()
+AttributeError: 'PostDetail' object has no attribute 'get_form'
+12/May/2023 09:24:16   ERROR   "POST /news/97 HTTP/1.1" 500 83626   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:46:38   ERROR   Internal Server Error: /news/97   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'AttributeError'>, AttributeError("'PostDetail' object has no attribute 'get_form'"), <traceback object at 0x000002B99A549980>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 110, in post
+    form = self.get_form()
+AttributeError: 'PostDetail' object has no attribute 'get_form'
+12/May/2023 09:46:38   ERROR   "POST /news/97 HTTP/1.1" 500 83627   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:53:33   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.core.exceptions.ImproperlyConfigured'>, ImproperlyConfigured('No URL to redirect to. Provide a success_url.'), <traceback object at 0x0000025DB3C80700>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 60, in get_success_url
+    raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+django.core.exceptions.ImproperlyConfigured: No URL to redirect to. Provide a success_url.
+12/May/2023 09:53:33   ERROR   "POST /news/96 HTTP/1.1" 500 96404   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:55:41   ERROR   Internal Server Error: /news/97   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000221BA035120>>": "Comment.user" must be a "User" instance.'), <traceback object at 0x00000221BA03A8C0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 120, in form_valid
+    self.object.user = self.request.user
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000221BA035120>>": "Comment.user" must be a "User" instance.
+12/May/2023 09:55:41   ERROR   "POST /news/97 HTTP/1.1" 500 92571   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:56:24   ERROR   Internal Server Error: /news/97   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000001CD2893AC50>>": "Comment.user" must be a "User" instance.'), <traceback object at 0x000001CD28981180>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 120, in form_valid
+    self.object.user = self.request.user
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000001CD2893AC50>>": "Comment.user" must be a "User" instance.
+12/May/2023 09:56:24   ERROR   "POST /news/97 HTTP/1.1" 500 92571   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:56:56   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'news' with keyword arguments '{'post_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\\\Z']"), <traceback object at 0x000001CD28BE4780>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\http\response.py", line 576, in __init__
+    self["Location"] = iri_to_uri(redirect_to)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\encoding.py", line 138, in iri_to_uri
+    iri = str(iri)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 155, in __text_cast
+    return func(*self.__args, **self.__kw)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'news' with keyword arguments '{'post_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\Z']
+12/May/2023 09:56:56   ERROR   "POST /news/96 HTTP/1.1" 500 116992   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 09:57:19   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'post' not found. 'post' is not a valid view function or pattern name."), <traceback object at 0x0000018B902349C0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\http\response.py", line 576, in __init__
+    self["Location"] = iri_to_uri(redirect_to)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\encoding.py", line 138, in iri_to_uri
+    iri = str(iri)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 155, in __text_cast
+    return func(*self.__args, **self.__kw)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'post' not found. 'post' is not a valid view function or pattern name.
+12/May/2023 09:57:19   ERROR   "POST /news/96 HTTP/1.1" 500 114895   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 10:14:54   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'news' with keyword arguments '{'post_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\\\Z']"), <traceback object at 0x000002DE605FECC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\http\response.py", line 576, in __init__
+    self["Location"] = iri_to_uri(redirect_to)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\encoding.py", line 138, in iri_to_uri
+    iri = str(iri)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 155, in __text_cast
+    return func(*self.__args, **self.__kw)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'news' with keyword arguments '{'post_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\Z']
+12/May/2023 10:14:54   ERROR   "POST /news/96 HTTP/1.1" 500 116992   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 10:15:22   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'news' with keyword arguments '{'news_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\\\Z']"), <traceback object at 0x00000153208E4140>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\http\response.py", line 576, in __init__
+    self["Location"] = iri_to_uri(redirect_to)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\encoding.py", line 138, in iri_to_uri
+    iri = str(iri)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 155, in __text_cast
+    return func(*self.__args, **self.__kw)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'news' with keyword arguments '{'news_id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\Z']
+12/May/2023 10:15:22   ERROR   "POST /news/96 HTTP/1.1" 500 116992   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 10:17:21   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'news' with keyword arguments '{'id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\\\Z']"), <traceback object at 0x00000146DC9846C0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 122, in form_valid
+    return super().form_valid(form)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 65, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\http\response.py", line 576, in __init__
+    self["Location"] = iri_to_uri(redirect_to)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\encoding.py", line 138, in iri_to_uri
+    iri = str(iri)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 155, in __text_cast
+    return func(*self.__args, **self.__kw)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'news' with keyword arguments '{'id': 96}' not found. 1 pattern(s) tried: ['news/(?P<pk>[0-9]+)\\Z']
+12/May/2023 10:17:21   ERROR   "POST /news/96 HTTP/1.1" 500 116932   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 10:51:34   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000028B3C0815A0>>": "Comment.user" must be a "User" instance.'), <traceback object at 0x0000028B3BFB6C40>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 120, in form_valid
+    self.object.user = self.request.user
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000028B3C0815A0>>": "Comment.user" must be a "User" instance.
+12/May/2023 10:51:34   ERROR   "POST /news/96 HTTP/1.1" 500 92922   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+12/May/2023 12:15:54   ERROR   Internal Server Error: /news/96   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000028B3C046C80>>": "Comment.user" must be a "User" instance.'), <traceback object at 0x0000028B3BFAD700>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 113, in post
+    return self.form_valid(form)
+  File "C:\Users\user\projects\news_portal\news\views.py", line 120, in form_valid
+    self.object.user = self.request.user
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000028B3C046C80>>": "Comment.user" must be a "User" instance.
+12/May/2023 12:15:54   ERROR   "POST /news/96 HTTP/1.1" 500 92551   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None

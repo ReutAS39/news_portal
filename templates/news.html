@@ -5,17 +5,48 @@
 
 
 {% block content %}
-<h4>{{ news.article|censor }}</h4>
-<h5>{{ news.time_in|date:'d M Y' }}</h5>
-<p id="zzz">{{ news.text|censor }}</p>
-{% if request.user.username and cat_selected not in cat_subscriber  %}
-    <a href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
-<br>
-{% endif%}
+    <h4>{{ news.article|censor }}</h4>
+    <h5>{{ news.time_in|date:'d M Y' }}</h5>
+    <p>{{ news.text|censor }}</p>
 
 {% if is_author %}
-    <a href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
-    <a href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
+    <ul>
+        <a class="btn btn-success" href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
+        <a class="btn btn-danger" href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
+    </ul>
 {% endif%}
+{% if request.user.username and cat_selected not in cat_subscriber  %}
+    <a class="btn btn-warning" href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
+{% endif%}
+    <hr>
+
+        <h5>{{ news.comments_post.all.count }} комментариев</h5>
+{% if request.user.is_authenticated %}
+        <form action="#" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+{% for f in form %}
+                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+{% endfor %}
+            <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+        </form>
+{% endif %}
+       <div class="comments" style="
+                width: 500px;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                ">
+        <ul>
+{% for c in news.comments_post.all %}
+            <p> <strong>{{ c.user }}</strong> <span stayle="font: inherit">{{ c.time_in|date:'d M Y' }}</span></p>
+            <p>{{ c.text }}</p>
+            <hr>
+{% endfor %}
+        </ul>
+    </div>
+
 {% endblock content %}
 

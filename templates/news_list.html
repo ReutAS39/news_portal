@@ -16,13 +16,13 @@
     <br>
     {% endif%}
        <div class="category_list">
-           <a href="{% url 'news_list'%}" title="Разделы новостей" class="btn btn-outline-primary">Все категории:</a>
+           <a href="{% url 'news_list'%}" title="Разделы новостей" class="btn btn-outline-secondary">Все категории:</a>
 {% get_categories as categories %}
 {% for c in categories %}
 {% if c == cat_selected %}
-    <p class="btn btn-secondary">{{c.name}}</p>
+    <p class="btn btn-primary">{{c.name}}</p>
 {% else %}
-        <a href={{c.get_absolute_url}} class="btn btn-primary">{{c.name}}</a>
+        <a href={{c.get_absolute_url}} class="btn btn-secondary">{{c.name}}</a>
 {% endif %}
 {% endfor %}
        </div>

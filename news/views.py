@@ -8,11 +8,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
-
+from django.views.generic.edit import FormMixin
 
 from .models import Post, Category, Author
 from .filters import PostFilter
-from .forms import PostForm
+from .forms import PostForm, CommentForm
+
 # from .tasks import hello, printer, mass_sender
 
 
@@ -85,13 +86,15 @@ class PostsList(ListView):
         return context
 
 
-class PostDetail(DetailView):
+class PostDetail(DetailView, FormMixin):
+
     # Модель всё та же, но мы хотим получать информацию по отдельному товару
     model = Post
     # Используем другой шаблон — news.html
     template_name = 'news.html'
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
+    form_class = CommentForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -103,6 +106,23 @@ class PostDetail(DetailView):
 
         return context
 
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            #messages.success(request, 'Комментарий добавлен.')
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.post = self.get_object()
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('news', kwargs={'pk': self.get_object().pk})
 
 class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 

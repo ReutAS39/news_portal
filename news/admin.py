@@ -7,6 +7,11 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('position', 'time_in', 'category__name')  # добавляем примитивные фильтры в нашу админку
     search_fields = ('article', 'text')  # тут всё очень похоже на фильтры из запросов в базу
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    # list_filter = ('position', 'time_in', 'category__name')  # добавляем примитивные фильтры в нашу админку
+    # search_fields = ('article', 'text')  # тут всё очень похоже на фильтры из запросов в базу
 
-admin.site.register(Category)
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)

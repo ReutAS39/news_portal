@@ -1,7 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
 {% block content %}
-<h2> {{object.get_position}}</h2>
+<h3> Редактирование {{object.get_position}}</h3>
 <hr>
 <form action="" method="post">
     {% csrf_token %}
