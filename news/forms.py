@@ -10,7 +10,7 @@ from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
-    article = forms.CharField(max_length=255, label='Заголовок:')
+    article = forms.CharField(max_length=255, label='Заголовок: ')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,14 +28,14 @@ class PostForm(forms.ModelForm):
         ]
         widgets = {
            'article': forms.TextInput(attrs={'class': 'form-input'}),
-           'text': forms.Textarea(attrs={'cols': 80, 'rows': 10}),
+           'text': forms.Textarea(attrs={'cols': 80, 'rows': 10, 'placeholder': 'Текст'}),
         }
 
         labels = {
-           'text': _('Текст'),
-           'author': _('Автор:'),
-           'category': _('Категория:'),
-           'position': _('Статья/Новость:'),
+           'text': '',
+           'author': 'Автор:',
+           'category': 'Категория:',
+           'position': 'Статья/Новость:',
         }
 
     def clean_text(self):
@@ -61,7 +61,7 @@ class CommentForm(forms.ModelForm):
                            widget=Textarea(attrs={
                             "cols": 60,
                             "rows": 4,
-                            "placeholder": 'Написать комментарий'
+                            "placeholder": 'Написать комментарий...'
                            })
                            )
 
