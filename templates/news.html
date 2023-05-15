@@ -26,10 +26,10 @@
     {% csrf_token %}
             <div class="form-error">{{ form.non_field_errors }}</div>
 {% for f in form %}
-                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
             <div class="form-error">{{ f.errors }}</div>
 {% endfor %}
-            <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
 {% endif %}
        <div class="comments" style="

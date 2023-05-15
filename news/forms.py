@@ -15,14 +15,14 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['author'].empty_label = 'Выберите автора'
-        #self.fields['position'].initial = 'NE'
+        # self.fields['position'].initial = 'NE'
 
     class Meta:
         model = Post
         fields = [
            'author',
            'category',
-           #'position',
+           # 'position',
            'article',
            'text',
         ]
@@ -56,7 +56,14 @@ class BasicSignupForm(SignupForm):
 
 
 class CommentForm(forms.ModelForm):
-    text = forms.CharField(max_length=255, label='Текст', widget=Textarea(attrs={"cols": 60, "rows": 4}))
+    text = forms.CharField(max_length=255,
+                           label='',
+                           widget=Textarea(attrs={
+                            "cols": 60,
+                            "rows": 4,
+                            "placeholder": 'Написать комментарий'
+                           })
+                           )
 
     class Meta:
         model = Comment
