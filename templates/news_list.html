@@ -39,7 +39,7 @@
 {% if news_list %}
 {% for news in news_list %}
     <div class="container_sf">
-        <a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a>
+        <div><a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></div>
         <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
         <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
     </div>

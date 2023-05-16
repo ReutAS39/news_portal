@@ -32,21 +32,15 @@
             <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
 {% endif %}
-       <div class="comments" style="
-                width: 500px;
-                background-color: #f2f2f2;
-                border-radius: 10px;
-                margin-left: auto;
-                margin-right: auto;
-                ">
-        <ul>
+
 {% for c in news.comments_post.all %}
-            <p> <strong>{{ c.user }}</strong> <span stayle="font: inherit">{{ c.time_in|date:'d M Y' }}</span></p>
-            <p>{{ c.text }}</p>
-            <hr>
-{% endfor %}
-        </ul>
+    <div class="comments_sf">
+        <div class="el article"> {{ c.user }} </div>
+        <div class="el date"> {{ c.time_in|date:'d M Y' }}</div>
+        <div class="el text">{{ c.text }}</div>
     </div>
+{% endfor %}
+
 
 {% endblock content %}
 
