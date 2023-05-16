@@ -11316,16 +11316,22 @@ textarea.form-control-lg {
   .date {
     width: 10rem;
     text-align: start;
-    font-size: 1rem
-    padding-left: 2em
+    font-size: 1rem;
+    padding-left: 3px;
 
   }
 
   .text {
     width: auto;
-    font-size: 1rem
+    font-size: 1rem;
 }
+  .footer {
+    width: 10rem;
+    text-align: start;
+    font-size: 1rem;
 
+
+  }
 
 .comments_sf {
     width: 500px;
@@ -11356,12 +11362,12 @@ textarea.form-control-lg {
   .date {
     width: 10rem;
     text-align: start;
-    font-size: 0.8rem
+    font-size: 0.8rem;
 
 
   }
 
   .text {
     width: auto;
-    font-size: 1rem
+    font-size: 1rem;
 }

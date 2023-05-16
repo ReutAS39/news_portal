@@ -42,6 +42,10 @@
         <div><a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></div>
         <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
         <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
+        <div class="el footer">
+            <button type="submit" class="btn btn-primary">лайк</button>
+            <button type="submit" class="btn btn-primary">коммент</button>
+        </div>
     </div>
 {% endfor %}
 {% else %}
