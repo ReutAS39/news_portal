@@ -35,23 +35,15 @@
        {# Добавим кнопку отправки данных формы #}
        <input type="submit" value="Найти" />
    </form>
-    <hr>
+
 {% if news_list %}
-       <table>
-           <tr>
-               <td><h5>Заголовок</h5></td>
-               <td><h5>Дата публикации</h5></td>
-               <td><h5>Текст</h5></td>
-           </tr>
 {% for news in news_list %}
-           <tr>
-               <!--<td>{{ news.article|censor }}</td>-->
-               <td><a href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></td>
-               <td>{{ news.time_in|date:'d M Y' }}</td>
-               <td>{{ news.text|censor|truncatewords:20}}</td>
-           </tr>
+    <div class="container_sf">
+        <a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a>
+        <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
+        <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
+    </div>
 {% endfor %}
-       </table>
 {% else %}
        <h2>Статей нет!</h2>
 {% endif %}

@@ -11288,3 +11288,40 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+
+
+.container_sf {
+    margin-top: 5px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    background: rgb(252, 245, 245);
+    border-radius: 20px;
+  }
+
+  .el {
+    text-align: center;
+    margin: 1px;
+
+
+  }
+
+  .article {
+    font-size: 20px;
+    width: auto;
+  }
+
+  .date {
+    width: 10rem;
+    text-align: start;
+    font-size: 1rem
+    padding-left: 2em
+
+  }
+
+  .text {
+    width: auto;
+    font-size: 1rem
+}
