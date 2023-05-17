@@ -36,9 +36,13 @@
 
 nav ul li {
     list-style-type: none;
-
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-size: 15px;
 }
 
 nav ul li a {
     text-decoration: none;
+    font-weight: 700;
+    margin-right: 55px;
 }

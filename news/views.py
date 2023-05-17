@@ -228,7 +228,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 class CategoryList(ListView):
     model = Post
     ordering = '-time_in'
-    template_name = 'news_list.html'
+    template_name = 'news_listpro.html'
     context_object_name = 'news_list'
     paginate_by = 5
 

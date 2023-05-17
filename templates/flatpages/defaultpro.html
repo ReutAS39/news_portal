@@ -34,7 +34,9 @@
     </header>
     <main class="main-section">
         <div class="fixed-container">
-
+            {% block content %}
+            {{ flatpage.content }}
+            {% endblock content %}
         </div>
 
     </main>
