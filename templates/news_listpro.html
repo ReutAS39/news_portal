@@ -1,0 +1,81 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/defaultpro.html' %}
+{% load custom_filters %}
+
+{# Импортируем модуль с нашим тегом #}
+{% load custom_tags %}
+
+{% block content %}
+{% if request.user.username and not is_author %}
+    <button> <a href="upgrade/"> Хочу стать автором!</a> </button>
+{% endif %}
+   <h5>{{ news_count }}</h5>
+    {% if request.user.username and cat_selected not in cat_subscriber %}
+        <a href="/news/subscribe/{{cat_selected.id}}"  class="alert-warning">Подписаться!</a>
+    {% else %}
+    <br>
+    {% endif%}
+       <div class="category_list">
+           <a href="{% url 'news_list'%}" title="Разделы новостей" class="btn btn-outline-secondary">Все категории:</a>
+{% get_categories as categories %}
+{% for c in categories %}
+{% if c == cat_selected %}
+    <p class="btn btn-primary">{{c.name}}</p>
+{% else %}
+        <a href={{c.get_absolute_url}} class="btn btn-secondary">{{c.name}}</a>
+{% endif %}
+{% endfor %}
+       </div>
+<hr>
+
+      {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
+   <form action="" method="get">
+       {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
+       {{ filterset.form.as_p }}
+       {# Добавим кнопку отправки данных формы #}
+       <input type="submit" value="Найти" />
+   </form>
+
+{% if news_list %}
+{% for news in news_list %}
+    <div class="container_sf">
+        <div><a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></div>
+        <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
+        <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
+        <div class="el footer">
+            <button type="submit" class="btn btn-primary">лайк</button>
+            <button type="submit" class="btn btn-primary">коммент</button>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+       <h2>Статей нет!</h2>
+{% endif %}
+
+{# Добавляем пагинацию на страницу #}
+
+   {# Информация о предыдущих страницах #}
+   {% if page_obj.has_previous %}
+       {# Для каждой ссылки пагинации указываем обработку через новый тег #}
+       <a href="?{% url_replace page=1 %}">1</a>
+   <!--    <a href="?page=1">1</a>-->
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+    <!--   <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>-->
+       {% endif %}
+   {% endif %}
+
+   {# Информация о текущей странице #}
+   {{ page_obj.number }}
+
+   {# Информация о следующих страницах #}
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+       <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
+{% endblock content %}

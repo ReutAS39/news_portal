@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+{% load static%}
+    <link href="{% static 'css/styles_2.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+        <div class="fixed-container">
+            <div class="menu-container">
+                <div class="logo">
+                    <img src="media/python.svg">
+                </div>
+                <nav class="header-menu">
+                    <ul class="menu">
+                        {% block mainmenu %}
+{% for m in menu %}
+                        <li class="menu-element"><a href="{% url m.url_name%}">{{m.title}}</a></li>
+{% endfor %}
+{% if request.user.is_authenticated %}
+                         <li class="menu-element"> {{user.username}}<a href="/accounts/logout">Выйти</a></li>
+{% else %}
+                        <li class="menu-element"><a href="/accounts/signup">Регистация</a> | <a href="/accounts/login">Войти</a></li>
+{% endif %}
+{% endblock mainmenu %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main-section">
+        <div class="fixed-container">
+
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

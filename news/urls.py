@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from .views import PostsList, PostDetail, PostCreate, PostUpdate, PostDelete, CategoryList
 from .views import upgrade_me, subscribe_me
@@ -18,3 +20,6 @@ urlpatterns = [
    path('subscribe/<int:pk>', subscribe_me, name='subscribe'),
    path('category/<int:pk>', CategoryList.as_view(), name='category'),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
