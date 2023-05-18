@@ -1,10 +1,11 @@
 {% extends 'flatpages/defaultpro.html' %}
 
+
 {% block content %}
-<h3> Редактирование {{object.get_position}}</h3>
-<hr>
-<form action="" method="post">
-    {% csrf_token %}
+    <h3> Редактирование {{object.get_position}}</h3>
+    <hr>
+    <form action="" method="post">
+{% csrf_token %}
 {% for f in form %}
                 <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
             <div class="form-error">{{ f.errors }}</div>

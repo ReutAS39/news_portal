@@ -81,7 +81,8 @@ class PostsList(ListView):
         context['title'] = 'Главная страница'
         context['cat_selected'] = 0
         context['menu'] = menu
-        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+        # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+
 
         return context
 
@@ -101,7 +102,7 @@ class PostDetail(DetailView, FormMixin):
         context['menu'] = menu
         context['title'] = f"{context['news'].article}"
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
-        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+        # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
         context['cat_selected'] = context['news'].category.get()
 
         return context
@@ -230,7 +231,7 @@ class CategoryList(ListView):
     ordering = '-time_in'
     template_name = 'news_listpro.html'
     context_object_name = 'news_list'
-    paginate_by = 5
+    paginate_by = 8
 
     def get_queryset(self, **kwargs):
         self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
@@ -247,5 +248,6 @@ class CategoryList(ListView):
         context['cat_selected'] = category_get
         context['news_count'] = f'Количество статей в категории {category_get}: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
-        context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+        # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
+
         return context

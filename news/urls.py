@@ -9,6 +9,7 @@ urlpatterns = [
    # path('', cache_page(60*1)(PostsList.as_view()), name='news_list'),
    path('', PostsList.as_view(), name='news_list'),
    #path('<int:pk>', cache_page(60*5)(PostDetail.as_view()), name='news'),  # Раз в 5 минут будет записываться в кэш
+   path('category/<int:pk>', CategoryList.as_view(), name='category'),
    path('<int:pk>', (PostDetail.as_view()), name='news'),  # Раз в 5 минут будет записываться в кэш
    path('news/create/', PostCreate.as_view(), name='news_create'),
    path('news/<int:pk>/edit', PostUpdate.as_view(), name='news_edit'),
@@ -18,7 +19,6 @@ urlpatterns = [
    path('articles/<int:pk>/delete', PostDelete.as_view(), name='articles_delete'),
    path('upgrade/', upgrade_me, name='upgrade'),
    path('subscribe/<int:pk>', subscribe_me, name='subscribe'),
-   path('category/<int:pk>', CategoryList.as_view(), name='category'),
 ]
 
 

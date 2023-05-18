@@ -9,7 +9,7 @@
     <h5>{{ news.time_in|date:'d M Y' }}</h5>
     <p>{{ news.text|censor }}</p>
 
-{% if is_author %}
+{% if request.user.groups.get.id == 2 %}
     <ul>
         <a class="btn btn-success" href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
         <a class="btn btn-danger" href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
