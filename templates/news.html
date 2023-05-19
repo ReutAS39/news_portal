@@ -5,8 +5,15 @@
 
 
 {% block content %}
+    <div class="article__meta">
+        <p class="meta meta_article">
+{{ news.time_in|date:'d M Y' }}
+        </p>
+    <p></p>
+    </div>
+
     <h4>{{ news.article|censor }}</h4>
-    <h5>{{ news.time_in|date:'d M Y' }}</h5>
+
     <p>{{ news.text|censor }}</p>
 
 {% if request.user.groups.get.id == 2 %}

@@ -2601,3 +2601,100 @@ Traceback (most recent call last):
     path = os.fspath(path)
 TypeError: expected str, bytes or os.PathLike object, not list
 18/May/2023 15:39:15   ERROR   "GET /news/media/python.svg HTTP/1.1" 500 82172   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+18/May/2023 16:19:26   ERROR   Internal Server Error: /news/category/3   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'home' not found. 'home' is not a valid view function or pattern name."), <traceback object at 0x00000286AFEE0B40>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+18/May/2023 16:19:26   ERROR   "GET /news/category/3 HTTP/1.1" 500 238998   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+19/May/2023 07:53:54   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\utils\log.py   (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 27: 'else', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x000002210C786C80>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\user\projects\news_portal\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 27: 'else', expected 'endblock'. Did you forget to register or load this tag?
+19/May/2023 07:53:54   ERROR   "GET /news/ HTTP/1.1" 500 262275   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None

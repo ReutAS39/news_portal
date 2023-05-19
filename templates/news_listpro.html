@@ -5,15 +5,6 @@
 {% load custom_tags %}
 
 {% block content %}
-   <h5>{{ news_count }}</h5>
-    {% if request.user.username and cat_selected not in cat_subscriber %}
-        <a href="/news/subscribe/{{cat_selected.id}}"  class="alert-warning">Подписаться!</a>
-    {% else %}
-    <br>
-    {% endif%}
-
-
-
 
 
 
@@ -22,19 +13,28 @@
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
        {{ filterset.form.as_p }}
        {# Добавим кнопку отправки данных формы #}
-       <input type="submit" value="Найти" />
+       <button class="search-btn" type="submit"> Найти </button>
    </form>
+
+{% if request.user.username and cat_selected not in cat_subscriber %}
+        <a href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
+    {% else %}
+    <br>
+    {% endif%}
 
         <div class="category-tab">
 {% get_categories as categories %}
 {% for c in categories %}
 {% if c == cat_selected %}
-            <p class="">{{c.name}}</p>
+            <p>{{c.name}}</p>
 {% else %}
-            <a href={{c.get_absolute_url}} class="">{{c.name}}</a>
+            <a href={{c.get_absolute_url}}>{{c.name}}</a>
 {% endif %}
 {% endfor %}
        </div>
+    <div class="news-count">
+{{ news_count }}
+    </div>
 
 {% if news_list %}
 {% for news in news_list %}

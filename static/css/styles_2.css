@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 .header, .main-section {
     padding-top: 0;
     background-color: blanchedalmond;
@@ -22,13 +26,17 @@
     display: flex;
     justify-content: space-between;
 }
-.logo {
-    background: url('../img/python.svg') no-repeat 10px 5px;
-    padding-left: 200px;
-	height: 100px;
-	}
 
-	ul.menu li.logo {margin: 0;}
+.logo {
+    padding-left: 100px;
+
+}
+
+.img {
+    background: url('../img/python.svg') no-repeat;
+    padding-left: 120px;
+	height: 120px;
+}
 
 .header-menu {
     padding-top: 20px;
@@ -54,7 +62,7 @@ nav ul li a {
 .section-content {
     padding: 200px 100px;
     border: 1px solid black;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .news_container {
@@ -65,18 +73,43 @@ nav ul li a {
     flex-direction: column;
     background: rgb(252, 245, 245);
     border-radius: 20px;
-  }
+    text-decoration: none;
+}
+
+.news_container a {
+    text-decoration: none;
+}
 
 .category-tab {
-
     margin-top: 10px;
     box-sizing: border-box;
 
 }
 
 .category-tab a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    font-weight: 700;
+    padding-top: calc(77px + 66px + -143px);
+    padding-right: calc(92px + -83px + 1px);
+    padding-bottom: calc(-23px + -42px + -49px + 51px + 80px + -8px + -9px);
+    padding-left: calc(35px + 89px + -34px + -98px + 30px + -12px);
+    height: calc(-26px + 57px + 42px + -41px);
+    color: var(--home-color-text-primary);
+}
 
+.category-tab p {
+    position: relative;
+    display: inline-flex;
+    font-weight: 900;
+    padding-top: calc(77px + 66px + -143px);
+    padding-right: calc(92px + -83px + 1px);
+    padding-bottom: calc(-23px + -42px + -49px + 51px + 80px + -8px + -9px);
+    padding-left: calc(35px + 89px + -34px + -98px + 30px + -12px);
+    height: calc(-26px + 57px + 42px + -41px);
 }
 
 .author-btn {
@@ -92,4 +125,22 @@ nav ul li a {
 
 .author-btn a {
     text-decoration: none;
+    color: black;
+}
+
+.search-btn {
+    width: 84px;
+    padding: 8px;
+    cursor: pointer;
+    pointer-events: auto;
+    color: #fff;
+    border: none;
+    background: #005FF9;
+    font-size: 16px;
+}
+
+.meta_article {
+    color: #777;
+    margin: 5px 0 10px;
+    font-size: 10px;
 }
