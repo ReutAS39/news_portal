@@ -16,9 +16,9 @@ def url_replace(context, **kwargs):
 def get_categories():
     return Category.objects.all()
 
-@register.simple_tag(takes_context=True)
-def get_author(context):
-    user = context['user']
-    print(user)
-   # return User.objects.filter(username=context['user'].exists())
+# @register.simple_tag(takes_context=True)
+# def get_author(context):
+#     user = context['user']
+#     print(user)
+#    # return User.objects.filter(username=context['user'].exists())
 

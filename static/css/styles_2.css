@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
+p {
+    margin: 10px 0 20px;
+
+}
+
 .header, .main-section {
     padding-top: 0;
     background-color: blanchedalmond;
@@ -25,6 +30,12 @@
     padding-top: 40px;
     display: flex;
     justify-content: space-between;
+}
+.comments-container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 440px;
 }
 
 .logo {
@@ -60,7 +71,7 @@ nav ul li a {
 }
 
 .section-content {
-    padding: 200px 100px;
+    padding: 100px 100px;
     border: 1px solid black;
     font-size: 20px;
 }
@@ -78,6 +89,8 @@ nav ul li a {
 
 .news_container a {
     text-decoration: none;
+    color: black;
+    font-weight: 700;
 }
 
 .category-tab {
@@ -142,5 +155,96 @@ nav ul li a {
 .meta_article {
     color: #777;
     margin: 5px 0 10px;
-    font-size: 10px;
+    font-size: 12px;
+    display: flex;
+    text-transform: uppercase;
+}
+
+.meta__item {
+    margin: 10px 13px 0 0;
+}
+
+.article__title {
+    font-size: 1.57em;
+    margin: 0 0 10px;
+
+}
+
+.article__description {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+
+.pagination {
+    margin: 20px 20px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.pagination a {
+	margin: 20px 0 0 0;
+    margin: 5px;
+    border: 1px solid #d0d0d0;
+	border-radius: 30px;
+	text-decoration: none;
+	font-size: 24px;
+}
+
+.article {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: center;
+}
+
+.date {
+    color: #777;
+    margin: 5px 0 10px;
+    font-size: 14px;
+    display: flex;
+    text-transform: uppercase;
+}
+
+.text {
+    line-height: 28px;
+}
+
+.comments-count {
+    font-size: 22px;
+    text-align: center;
+}
+
+.comment {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: var(--content-offset) 0;
+    min-width: 0;
+    align-self: start;
+    flex-direction: column;
+    background-color: #f2f4fa;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.comment_author {
+
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.comment_date {
+    font-size: 13px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: var(--theme-color-text-secondary);
+}
+
+.comment_text {
+    margin-top: 0;
+
 }

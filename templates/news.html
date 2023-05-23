@@ -7,14 +7,23 @@
 {% block content %}
     <div class="article__meta">
         <p class="meta meta_article">
+            <span class="meta__item meta__item_first-line">
 {{ news.time_in|date:'d M Y' }}
+            </span>
+            <span class="meta__item">
+{{ cat_selected }}
+            </span>
+            <span class="meta__subscribe">
+{% if request.user.username and cat_selected not in cat_subscriber  %}
+             <a class="btn-subsctibe" href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
+{% endif%}
+            </span>
         </p>
-    <p></p>
     </div>
-
-    <h4>{{ news.article|censor }}</h4>
-
-    <p>{{ news.text|censor }}</p>
+    <h2 class="article__title">{{ news.article|censor }}</h2>
+    <div class="article__description">
+            <p>{{ news.text|censor }}</p>
+    </div>
 
 {% if request.user.groups.get.id == 2 %}
     <ul>
@@ -22,31 +31,36 @@
         <a class="btn btn-danger" href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
     </ul>
 {% endif%}
-{% if request.user.username and cat_selected not in cat_subscriber  %}
-    <a class="btn btn-warning" href="/news/subscribe/{{cat_selected.id}}"><b>Подписаться!</b></a>
-{% endif%}
-    <hr>
 
-        <h5>{{ news.comments_post.all.count }} комментариев</h5>
+    <hr>
+        <div class="fixed-container">
+            <div class="comments-container">
+                <h1 class="comments-count">
+                    {{ news.comments_post.all.count }} комментариев
+                </h1>
 {% if request.user.is_authenticated %}
-        <form action="#" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-            <div class="form-error">{{ form.non_field_errors }}</div>
+                <form action="#" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
 {% for f in form %}
-                <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
-            <div class="form-error">{{ f.errors }}</div>
+                <div>
+                    <label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}
+                </div>
+                <div class="form-error">{{ f.errors }}</div>
 {% endfor %}
-            <button type="submit" class="btn btn-primary">Отправить</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
 {% endif %}
 
 {% for c in news.comments_post.all %}
-    <div class="comments_sf">
-        <div class="el article"> {{ c.user }} </div>
-        <div class="el date"> {{ c.time_in|date:'d M Y' }}</div>
-        <div class="el text">{{ c.text }}</div>
-    </div>
+                <div class="comment">
+                    <div class="comment_author"> {{ c.user }} </div>
+                    <time class="comment_date"> {{ c.time_in|date:'d M Y' }}</time>
+                    <p class="comment_text">{{ c.text }}</p>
+                </div>
 {% endfor %}
+             </div>
+        </div>
 
 
 {% endblock content %}

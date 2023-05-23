@@ -16,11 +16,6 @@
        <button class="search-btn" type="submit"> Найти </button>
    </form>
 
-{% if request.user.username and cat_selected not in cat_subscriber %}
-        <a href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
-    {% else %}
-    <br>
-    {% endif%}
 
         <div class="category-tab">
 {% get_categories as categories %}
@@ -42,21 +37,24 @@
         <div><a class="el article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></div>
         <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
         <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
+    {% if request.user.is_authenticated %}
         <div class="el footer">
             <button type="submit" class="">лайк</button>
             <button type="submit" class="">коммент</button>
         </div>
+    {% endif %}
     </div>
 {% endfor %}
 {% else %}
        <h2>Статей нет!</h2>
 {% endif %}
-
+   <div class="pagination">
 {# Добавляем пагинацию на страницу #}
 
    {# Информация о предыдущих страницах #}
    {% if page_obj.has_previous %}
        {# Для каждой ссылки пагинации указываем обработку через новый тег #}
+
        <a href="?{% url_replace page=1 %}">1</a>
    <!--    <a href="?page=1">1</a>-->
        {% if page_obj.previous_page_number != 1 %}
@@ -77,5 +75,5 @@
        <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
        {% endif %}
    {% endif %}
-
+    </div>
 {% endblock content %}
