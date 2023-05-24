@@ -231,9 +231,7 @@ nav ul li a {
 }
 
 .comment_author {
-
-    white-space: nowrap;
-    min-width: 0;
+    font-weight: 600;
 }
 
 .comment_date {
@@ -248,3 +246,4 @@ nav ul li a {
     margin-top: 0;
 
 }
+

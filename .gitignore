@@ -1,7 +1,4 @@
 
 .idea/
-__pycache__/
+__pycache__
 *.pyc
-
-news.__pycache__
-news_portal.__pycache__

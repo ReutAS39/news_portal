@@ -96,6 +96,7 @@ class PostDetail(DetailView, FormMixin):
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
     form_class = CommentForm
+    ordering = '-time_in'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

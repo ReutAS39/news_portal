@@ -39,7 +39,7 @@
         <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
     {% if request.user.is_authenticated %}
         <div class="el footer">
-            <button type="submit" class="">лайк</button>
+            <button type="submit"><div class="">лайк</div></button>
             <button type="submit" class="">коммент</button>
         </div>
     {% endif %}
