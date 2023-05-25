@@ -83,7 +83,6 @@ class PostsList(ListView):
         context['menu'] = menu
         # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
 
-
         return context
 
 
@@ -96,7 +95,6 @@ class PostDetail(DetailView, FormMixin):
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
     form_class = CommentForm
-    ordering = '-time_in'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -125,6 +123,7 @@ class PostDetail(DetailView, FormMixin):
 
     def get_success_url(self, **kwargs):
         return reverse_lazy('news', kwargs={'pk': self.get_object().pk})
+
 
 class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 

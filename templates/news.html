@@ -26,9 +26,9 @@
     </div>
 
 {% if request.user.groups.get.id == 2 %}
-    <ul>
-        <a class="btn btn-success" href="/news/{{news.get_position}}/{{news.id}}/edit"><b>Редактировать</b></a>
-        <a class="btn btn-danger" href="/news/{{news.get_position}}/{{news.id}}/delete"><b>Удалить</b></a>
+    <ul class="edit-tab">
+        <a class="edit-btn" href="/news/{{news.get_position}}/{{news.id}}/edit">Редактировать</a>
+        <a class="delete-btn" href="/news/{{news.get_position}}/{{news.id}}/delete">Удалить</a>
     </ul>
 {% endif%}
 
