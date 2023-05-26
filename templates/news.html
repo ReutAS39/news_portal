@@ -24,7 +24,22 @@
     <div class="article__description">
             <p>{{ news.text|censor }}</p>
     </div>
-
+{% if request.user.is_authenticated %}
+    <div class="content-footer">
+        <button class="like-btn" type="submit" style="background-color: white;">
+            <div class="like-icon">
+                <svg class="likesvg" height="30" width="30"></svg>
+            </div>
+            <span class="like-count">{{ news.rating }}</span>
+        </button>
+        <a class="comment-btn" href="{{ news.get_absolute_url }}">
+             <div class="comment-icon">
+                <svg class="commentsvg" height="30" width="30"></svg>
+            </div>
+            <span class="comment-count">{{ news.comments_post.count }}</span>
+        </a>
+    </div>
+{% endif %}
 {% if request.user.groups.get.id == 2 %}
     <ul class="edit-tab">
         <a class="edit-btn" href="/news/{{news.get_position}}/{{news.id}}/edit">Редактировать</a>

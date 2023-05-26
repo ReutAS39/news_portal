@@ -49,6 +49,7 @@ p {
 	height: 120px;
 }
 
+
 .header-menu {
     padding-top: 20px;
 }
@@ -68,6 +69,10 @@ nav ul li a {
     text-decoration: none;
     font-weight: 700;
     margin-right: 55px;
+}
+
+#last {
+    margin-right: 0px;
 }
 
 .section-content {
@@ -151,6 +156,76 @@ nav ul li a {
     line-height: 28px;
 }
 
+.content-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 12px;
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.like-btn {
+    margin-right: 20px;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-size: 15px;
+    background-color: rgb(252, 245, 245);
+}
+
+.like-icon {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.likesvg {
+   background: url('../img/like.svg') no-repeat;
+}
+
+.like-count {
+    position: relative;
+    margin-left: 5px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.comment-btn {
+    margin-right: 20px;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.comment-icon {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateZ(0);
+
+}
+
+.commentsvg {
+    stroke: currentColor;
+}
+
+.commentsvg {
+   background: url('../img/comment-icon.svg') no-repeat;
+}
+
+.comment-count {
+    position: relative;
+    margin-left: 5px;
+    font-weight: 500;
+    color: black;
+}
+
 .pagination {
     margin: 20px 20px 20px;
     display: flex;
@@ -197,6 +272,13 @@ nav ul li a {
 
 .meta__item {
     margin: 10px 13px 0 0;
+}
+
+.meta__subscribe a {
+    text-decoration: none;
+    background-color: #4683d9;
+    color: white;
+
 }
 
 .article__title {
@@ -287,7 +369,7 @@ nav ul li a {
     margin-top: 0;
 }
 
-.search-form {
+.search-form form {
     display: flex;
     justify-content: start;
     gap: 20px;
@@ -305,6 +387,16 @@ nav ul li a {
     padding-bottom: calc(-23px + -42px + -49px + 51px + 80px + -8px + -9px);
     padding-left: calc(35px + 89px + -34px + -98px + 30px + -12px);
     height: calc(-26px + 57px + 42px + -41px);
+}
 
+.edit-form {
+    width: 500px;
+    margin: 0 auto;
+    gap: 20px;
+}
 
+.delete-form {
+    width: 500px;
+    margin: 0 auto;
+    gap: 20px;
 }

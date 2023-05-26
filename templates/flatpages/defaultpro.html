@@ -26,7 +26,7 @@
 {% if request.user.is_authenticated %}
                          <li class="menu-element"> {{user.username}}<a href="/accounts/logout">Выйти</a></li>
 {% else %}
-                         <li class="menu-element"><a href="/accounts/signup">Регистация </a>|<a href="/accounts/login">Войти</a></li>
+                         <li class="menu-element"><a id="last" href="/accounts/signup">Регистация</a>|<a href="/accounts/login">Войти</a></li>
 {% endif %}
 {% endblock mainmenu %}
                     </ul>

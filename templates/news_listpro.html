@@ -9,13 +9,14 @@
 
 
       {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
-   <form class="search-form" action="" method="get">
+   <div class="search-form">
+        <form action="" method="get">
        {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
        {{ filterset.form.as_p }}
        {# Добавим кнопку отправки данных формы #}
        <button class="search-btn" type="submit"> Найти </button>
-   </form>
-
+        </form>
+    </div>
 
         <div class="category-tab">
 {% get_categories as categories %}
@@ -38,9 +39,19 @@
         <div class="el date">{{ news.time_in|date:'d M Y' }}</div>
         <div class="el text">{{ news.text|censor|truncatewords:40}}</div>
     {% if request.user.is_authenticated %}
-        <div class="el footer">
-            <button type="submit"><div class="">лайк</div></button>
-            <button type="submit" class="">коммент</button>
+        <div class="content-footer">
+            <button class="like-btn" type="submit">
+                <div class="like-icon">
+                    <svg class="likesvg" height="30" width="30"></svg>
+                </div>
+                <span class="like-count">{{ news.rating }}</span>
+            </button>
+            <a class="comment-btn" href="{{ news.get_absolute_url }}">
+                 <div class="comment-icon">
+                    <svg class="commentsvg" height="30" width="30"></svg>
+                </div>
+                <span class="comment-count">{{ news.comments_post.count }}</span>
+            </a>
         </div>
     {% endif %}
     </div>
