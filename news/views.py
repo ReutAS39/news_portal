@@ -18,6 +18,7 @@ from .forms import PostForm, CommentForm
 
 
 menu = [
+        {'title': 'Главная', 'url_name': 'news_list'},
         {'title': 'Добавить статью', 'url_name': 'articles_create'},
         {'title': 'Добавить новость', 'url_name': 'news_create'},
         ]
@@ -50,7 +51,7 @@ class PostsList(ListView):
     ordering = '-time_in'
     # Указываем имя шаблона, в котором будут все инструкции о том,
     # как именно пользователю должны быть показаны наши объекты
-    template_name = 'news_listpro.html'
+    template_name = 'news_list.html'
     # Это имя списка, в котором будут лежать все объекты.
     # Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     context_object_name = 'news_list'
@@ -229,7 +230,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 class CategoryList(ListView):
     model = Post
     ordering = '-time_in'
-    template_name = 'news_listpro.html'
+    template_name = 'news_list.html'
     context_object_name = 'news_list'
     paginate_by = 8
 

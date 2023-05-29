@@ -50,7 +50,7 @@ class Post(models.Model):
     category = models.ManyToManyField(Category, through='PostCategory')
     article = models.CharField(max_length=255)  # заголовок статьи/новости;
     text = models.TextField()  # текст статьи/новости;
-    rating = models.FloatField(default=0.0)  # рейтинг статьи/новости.
+    rating = models.IntegerField(default=0)  # рейтинг статьи/новости.
 
     def like(self):
         self.rating += 1
@@ -84,13 +84,12 @@ class PostCategory(models.Model):
 
 class Comment(models.Model):
     # Под каждой новостью/статьёй можно оставлять комментарии, поэтому необходимо организовать их способ хранения тоже.
-
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments_post')  # связь «один ко многим» с моделью Post;
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # связь «один ко многим» со встроенной моделью User
 # (комментарии может оставить любой пользователь, необязательно автор);
     text = models.CharField(max_length=255)
     time_in = models.DateTimeField(auto_now_add=True)
-    rating = models.FloatField(default=0.0)
+    rating = models.IntegerField(default=0)
 
     def like(self):
         self.rating += 1

@@ -1,5 +1,5 @@
 from django import template
-from news.models import Category, User, Author
+from news.models import Category, User, Author, Comment
 
 register = template.Library()
 
@@ -16,9 +16,4 @@ def url_replace(context, **kwargs):
 def get_categories():
     return Category.objects.all()
 
-# @register.simple_tag(takes_context=True)
-# def get_author(context):
-#     user = context['user']
-#     print(user)
-#    # return User.objects.filter(username=context['user'].exists())
 

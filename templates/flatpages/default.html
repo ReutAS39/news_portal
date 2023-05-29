@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title|truncatechars:40}}</title>
 {% load static%}
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 </head>
 <body>
-        <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-       <div class="container">
-           <a class="navbar-brand" href="{% url 'news_list'%}">News Portal</a>
-<!--           <button class="navbar-toggler" type="button" data-toggle="collapse"-->
-<!--                   data-target="#navbarResponsive"-->
-<!--                   aria-controls="navbarResponsive" aria-expanded="false"-->
-<!--                   aria-label="Toggle navigation">-->
-<!--               <span class="navbar-toggler-icon"></span>-->
-<!--           </button>-->
+    <header class="header">
+        <div class="fixed-container">
+            <div class="menu-container">
+                <div class="logo">
+                    <a href="{% url 'news_list' %}"><div class="img"></div></a>
+                </div>
+                <nav class="header-menu">
+                    <ul class="menu">
 {% block mainmenu %}
 {% for m in menu %}
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                   <li class="nav-item">
-                       <a class="nav-link" aria-current="page" href="{% url m.url_name%}">{{m.title}}</a>
-                   </li>
+                        <li class="menu-element"><a href="{% url m.url_name%}">{{m.title}}</a></li>
 {% endfor %}
+
+
 {% if request.user.is_authenticated %}
-                   <li class="nav-link"> {{user.username}}
-                     <a href="/accounts/logout">Выйти</a>
-                   </li>
+                         <li class="menu-element"> {{user.username}}<a href="/accounts/logout">Выйти</a></li>
 {% else %}
-                   <li class="nav-link">
-                     <a href="/accounts/signup">Регистация</a> | <a href="/accounts/login">Войти</a>
-                   </li>
-               </ul>
-           </div>
-       </div>
+                         <li class="menu-element"><a id="last" href="/accounts/signup">Регистация</a>|<a href="/accounts/login">Войти</a></li>
 {% endif %}
 {% endblock mainmenu %}
-    </nav>
-
-        <!-- Page content-->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="main-section">
+            <div class="fixed-container">
+{% if request.user.is_authenticated and request.user.groups.get.id != 2 %}
+                        <button class="author-btn"> <a href="upgrade/"> Стать автором </a> </button>
+{% endif %}
+            </div>
+        </section>
+        <section class="content-section"></section>
+        <div class="fixed-container">
+            <div class="section-content">
 {% block content %}
 {{ flatpage.content }}
 {% endblock content %}
             </div>
         </div>
-    </div>
+    </main>
+    <footer class="footer">
+        <div class="fixed-container">
+            <p> © 2023 Частичное или полное копирование информации с данного сайта для распространения на других
+                ресурсах, в том числе и бумажных, строго запрещено. Все тексты и изображения являются
+                собственностью сайта</p>
+        </div>
+    </footer>
 </body>
 </html>

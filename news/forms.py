@@ -60,7 +60,7 @@ class CommentForm(forms.ModelForm):
                            label='',
                            widget=Textarea(attrs={
                             "cols": 60,
-                            "rows": 4,
+                            "rows": 5,
                             "placeholder": 'Написать комментарий...'
                            })
                            )

@@ -1,5 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
-{% extends 'flatpages/defaultpro.html' %}
+{% extends 'flatpages/default.html' %}
 
 {% load custom_filters %}
 
@@ -13,9 +16,9 @@
             <span class="meta__item">
 {{ cat_selected }}
             </span>
-            <span class="meta__subscribe">
+            <span class="meta__item">
 {% if request.user.username and cat_selected not in cat_subscriber  %}
-             <a class="btn-subsctibe" href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
+             <a class="btn-subscribe" href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
 {% endif%}
             </span>
         </p>
@@ -28,13 +31,13 @@
     <div class="content-footer">
         <button class="like-btn" type="submit" style="background-color: white;">
             <div class="like-icon">
-                <svg class="likesvg" height="30" width="30"></svg>
+                <svg class="likesvg" height="20" width="20"></svg>
             </div>
-            <span class="like-count">{{ news.rating }}</span>
+            <span class="like-count">{{ news.rating|floatformat }}</span>
         </button>
         <a class="comment-btn" href="{{ news.get_absolute_url }}">
              <div class="comment-icon">
-                <svg class="commentsvg" height="30" width="30"></svg>
+                <svg class="commentsvg" height="20" width="20"></svg>
             </div>
             <span class="comment-count">{{ news.comments_post.count }}</span>
         </a>
@@ -51,7 +54,7 @@
         <div class="fixed-container">
             <div class="comments-container">
                 <h1 class="comments-count">
-                    {{ news.comments_post.all.count }} комментариев
+                    {{ news.comments_post.all.count }} {{ news.comments_post.all.count|ru_plural:"комментарий,комментария,комментариев" }}
                 </h1>
 {% if request.user.is_authenticated %}
                 <form action="#" method="post" enctype="multipart/form-data">
@@ -72,11 +75,22 @@
                     <div class="comment_author"> {{ c.user }} </div>
                     <time class="comment_date"> {{ c.time_in|date:'d M Y' }}</time>
                     <p class="comment_text">{{ c.text }}</p>
+
+                    {% if request.user.is_authenticated %}
+    <div class="comment-footer">
+        <button class="like-btn" type="submit" style="background-color: #f2f4fa">
+            <div class="like-icon">
+                <svg class="likesvg" height="20" width="20"></svg>
+            </div>
+            <span class="like-count">{{ c.rating|floatformat }}</span>
+        </button>
+    </div>
+{% endif %}
+
                 </div>
 {% endfor %}
              </div>
         </div>
-
 
 {% endblock content %}
 
