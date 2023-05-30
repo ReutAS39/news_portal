@@ -84,7 +84,7 @@ class PostCategory(models.Model):
 
 class Comment(models.Model):
     # Под каждой новостью/статьёй можно оставлять комментарии, поэтому необходимо организовать их способ хранения тоже.
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments_post')  # связь «один ко многим» с моделью Post;
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments_post')
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # связь «один ко многим» со встроенной моделью User
 # (комментарии может оставить любой пользователь, необязательно автор);
     text = models.CharField(max_length=255)

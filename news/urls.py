@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 urlpatterns = [
    # path('', cache_page(60*1)(PostsList.as_view()), name='news_list'),
    path('', PostsList.as_view(), name='news_list'),
-   #path('<int:pk>', cache_page(60*5)(PostDetail.as_view()), name='news'),  # Раз в 5 минут будет записываться в кэш
+   # path('<int:pk>', cache_page(60*5)(PostDetail.as_view()), name='news'),  # Раз в 5 минут будет записываться в кэш
    path('category/<int:pk>', CategoryList.as_view(), name='category'),
    path('<int:pk>', (PostDetail.as_view()), name='news'),  # Раз в 5 минут будет записываться в кэш
    path('news/create/', PostCreate.as_view(), name='news_create'),

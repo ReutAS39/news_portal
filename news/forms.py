@@ -4,7 +4,6 @@ from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django.forms import Textarea
 
-from django.utils.translation import gettext_lazy as _
 
 from .models import Post, Comment
 
@@ -28,7 +27,12 @@ class PostForm(forms.ModelForm):
         ]
         widgets = {
            'article': forms.TextInput(attrs={'class': 'form-input'}),
-           'text': forms.Textarea(attrs={'cols': 80, 'rows': 10, 'placeholder': 'Текст'}),
+           'text': forms.Textarea(attrs={
+                                    'cols': 80,
+                                    'rows': 10,
+                                    'placeholder': 'Текст',
+                                    'style': 'resize: none;'
+                                   }),
         }
 
         labels = {
@@ -61,7 +65,8 @@ class CommentForm(forms.ModelForm):
                            widget=Textarea(attrs={
                             "cols": 60,
                             "rows": 5,
-                            "placeholder": 'Написать комментарий...'
+                            "placeholder": 'Написать комментарий...',
+                            "style": "resize:none;"
                            })
                            )
 
