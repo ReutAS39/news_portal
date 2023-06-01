@@ -35,14 +35,13 @@
         </div>
     </header>
     <main>
-        <section class="main-section">
+        <div class="main-section">
             <div class="fixed-container">
 {% if request.user.is_authenticated and request.user.groups.get.id != 2 %}
-                        <button class="author-btn"> <a href="upgrade/"> Стать автором </a> </button>
+                       <a class="author-btn" href="upgrade/"> Стать автором </a>
 {% endif %}
             </div>
-        </section>
-        <section class="content-section"></section>
+        </div>
         <div class="fixed-container">
             <div class="section-content">
 {% block content %}
