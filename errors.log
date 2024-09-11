@@ -3220,3 +3220,823 @@ Traceback (most recent call last):
     return self.user.rating
 AttributeError: 'User' object has no attribute 'rating'
 29/May/2023 16:19:44   ERROR   "GET /news/ HTTP/1.1" 500 424194   C:\Users\user\projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 13:25:11   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('time_in'), <traceback object at 0x000002469EDDEAC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 32, in __init__
+    self.filters['time_in'].label = "За период с"
+    ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'time_in'
+10/Sep/2024 13:25:11   ERROR   "GET /news/ HTTP/1.1" 500 105501   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 13:25:31   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('time_in'), <traceback object at 0x00000246A00AF0C0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 32, in __init__
+    self.filters['time_in'].label = "За период с"
+    ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'time_in'
+10/Sep/2024 13:25:31   ERROR   "GET /news/ HTTP/1.1" 500 105501   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 13:25:44   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('time_in'), <traceback object at 0x00000229EA312D00>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 32, in __init__
+    self.filters['time_in'].label = "За период с"
+    ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'time_in'
+10/Sep/2024 13:25:44   ERROR   "GET /news/ HTTP/1.1" 500 105489   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 13:25:51   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('time_in'), <traceback object at 0x0000021D83364380>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 32, in __init__
+    self.filters['time_in'].label = "За период с"
+    ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'time_in'
+10/Sep/2024 13:25:51   ERROR   "GET /news/ HTTP/1.1" 500 105489   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 14:08:37   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('time_in'), <traceback object at 0x0000021FBB8F9BC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 31, in __init__
+    self.filters['time_in'].label = "За период с"
+    ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'time_in'
+10/Sep/2024 14:08:37   ERROR   "GET /news/ HTTP/1.1" 500 105306   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+10/Sep/2024 14:19:33   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'TypeError'>, TypeError('DateInputWidget.format_value() takes 1 positional argument but 2 were given'), <traceback object at 0x0000019E26576700>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 914, in _resolve_lookup
+    current = current()
+              ^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\utils.py", line 84, in as_p
+    return self.render(self.template_name_p)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\utils.py", line 75, in render
+    return mark_safe(renderer.render(template, context))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\renderers.py", line 29, in render
+    return template.render(context, request=request).strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1070, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\template\base.py", line 1047, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\html.py", line 420, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+                                           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\boundfield.py", line 34, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\boundfield.py", line 107, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\widgets.py", line 280, in render
+    context = self.get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\widgets.py", line 333, in get_context
+    context = super().get_context(name, value, attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\forms\widgets.py", line 272, in get_context
+    "value": self.format_value(value),
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: DateInputWidget.format_value() takes 1 positional argument but 2 were given
+10/Sep/2024 14:19:33   ERROR   "GET /news/ HTTP/1.1" 500 361172   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:08:49   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError("Field 'id' expected a number but got 'Zaz'."), <traceback object at 0x000002A1077EF280>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'Zaz'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 69, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filters.py", line 158, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1271, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2057, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'Zaz'.
+11/Sep/2024 14:08:49   ERROR   "GET /news/?article__icontains=&author=Zaz&time_in= HTTP/1.1" 500 213312   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:09:11   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError("Field 'id' expected a number but got 'admin'."), <traceback object at 0x000002A10786D640>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'admin'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 69, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filters.py", line 158, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1271, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2057, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'admin'.
+11/Sep/2024 14:09:12   ERROR   "GET /news/?article__icontains=&author=admin&time_in= HTTP/1.1" 500 213374   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:09:51   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'ValueError'>, ValueError("Field 'id' expected a number but got 'Zaz'."), <traceback object at 0x00000248078D3C80>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'Zaz'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 69, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filters.py", line 158, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1271, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2057, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'Zaz'.
+11/Sep/2024 14:09:51   ERROR   "GET /news/?article__icontains=&time_in=&author=Zaz HTTP/1.1" 500 213312   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:10:14   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'django.core.exceptions.FieldError'>, FieldError("Unsupported lookup 'contains' for ForeignKey or join on the field not permitted."), <traceback object at 0x000001C0FFAE2FC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 69, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filters.py", line 158, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1265, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1309, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'contains' for ForeignKey or join on the field not permitted.
+11/Sep/2024 14:10:14   ERROR   "GET /news/?article__icontains=&time_in=&author=1 HTTP/1.1" 500 201013   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:10:22   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'django.core.exceptions.FieldError'>, FieldError("Unsupported lookup 'contains' for ForeignKey or join on the field not permitted."), <traceback object at 0x000001C0FFA56100>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 69, in get_queryset
+    return self.filterset.qs
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 230, in qs
+    qs = self.filter_queryset(qs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filterset.py", line 213, in filter_queryset
+    queryset = self.filters[name].filter(queryset, value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django_filters\filters.py", line 158, in filter
+    qs = self.get_method(qs)(**{lookup: value})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1265, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1309, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'contains' for ForeignKey or join on the field not permitted.
+11/Sep/2024 14:10:22   ERROR   "GET /news/?article__icontains=&time_in=&author=admin HTTP/1.1" 500 201093   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:17:14   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author'), <traceback object at 0x000002200B48E580>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'author'
+11/Sep/2024 14:17:14   ERROR   "GET /news/ HTTP/1.1" 500 105897   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:18:09   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author'), <traceback object at 0x000001C965D3B200>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'author'
+11/Sep/2024 14:18:09   ERROR   "GET /news/ HTTP/1.1" 500 105895   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:18:42   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author'), <traceback object at 0x0000023E6E69B500>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'author'
+11/Sep/2024 14:18:42   ERROR   "GET /news/ HTTP/1.1" 500 105893   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:19:03   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author'), <traceback object at 0x0000023E6E6F3180>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__id'].label = "Автор"
+    ^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author'
+11/Sep/2024 14:19:03   ERROR   "GET /news/ HTTP/1.1" 500 105901   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:34:16   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__username'), <traceback object at 0x0000018F5708FE00>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__username'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__username'
+11/Sep/2024 14:34:16   ERROR   "GET /news/?article__icontains=&author__user__username=admin&time_in= HTTP/1.1" 500 107194   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:34:46   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__username'), <traceback object at 0x000002399E28FE00>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__username'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__username'
+11/Sep/2024 14:34:46   ERROR   "GET /news/ HTTP/1.1" 500 105744   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:35:55   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__username'), <traceback object at 0x00000238BE051300>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__username'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__username'
+11/Sep/2024 14:35:55   ERROR   "GET /news/ HTTP/1.1" 500 105880   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:39:07   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__username'), <traceback object at 0x0000022477BCC200>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__username'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__username'
+11/Sep/2024 14:39:07   ERROR   "GET /news/ HTTP/1.1" 500 106103   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:39:48   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__icontains'), <traceback object at 0x000001DF1F078380>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__icontains'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__icontains'
+11/Sep/2024 14:39:48   ERROR   "GET /news/?article__icontains=&author__user__username__icontains=min&time_in= HTTP/1.1" 500 107287   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:39:52   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__icontains'), <traceback object at 0x000001DF1F296DC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__icontains'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__icontains'
+11/Sep/2024 14:39:52   ERROR   "GET /news/?article__icontains=&author__user__username__icontains=min&time_in= HTTP/1.1" 500 107287   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
+11/Sep/2024 14:39:56   ERROR   Internal Server Error: /news/   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\utils\log.py   (<class 'KeyError'>, KeyError('author__user__icontains'), <traceback object at 0x000001DF1F2B86C0>)
+Traceback (most recent call last):
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\views\generic\list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\views.py", line 67, in get_queryset
+    self.filterset = PostFilter(self.request.GET, queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\projects\news_portal\news\filters.py", line 29, in __init__
+    self.filters['author__user__icontains'].label = "Автор"
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'author__user__icontains'
+11/Sep/2024 14:39:56   ERROR   "GET /news/ HTTP/1.1" 500 105985   C:\Users\user\projects\news_portal\.venv\Lib\site-packages\django\core\servers\basehttp.py   None
