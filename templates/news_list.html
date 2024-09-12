@@ -40,6 +40,12 @@
     <article div class="news_container">
         <div><a class="article" href="{{ news.get_absolute_url }}">{{ news.article|censor }}</a></div>
         <div class="date">{{ news.time_in|date:'d M Y' }} by {{ news.author }}</div>
+
+     {% for c in news.category.all %}
+         <div class="date">{{ c.name }}</div>
+    {% endfor %}
+
+
         <div class="text">{{ news.text|censor|truncatewords:40}}</div>
     {% if request.user.is_authenticated %}
         <div class="content-footer">
