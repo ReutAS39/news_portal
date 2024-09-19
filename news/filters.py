@@ -1,7 +1,7 @@
 from random import choices
 
-from django.forms import DateInput
-from django_filters import FilterSet, DateFilter, ChoiceFilter
+from django.forms import DateInput, TextInput
+from django_filters import FilterSet, DateFilter, ChoiceFilter, CharFilter
 
 from .models import Post, POSITION
 
@@ -16,7 +16,6 @@ class PostFilter(FilterSet):
     # выводит виджет календаря при выборе даты за счёт атрибуты widget
     time_in = DateFilter(lookup_expr='gt', widget=DateInput(attrs={'type': 'date'}))
 
-
     class Meta:
         model = Post
         fields = {
@@ -25,6 +24,8 @@ class PostFilter(FilterSet):
            # exact выбирает все объекты моделей, в которых свойство равно определенному значению.
            'author__user__username': ['icontains'],
         }
+
+
 
     def __init__(self, *args, **kwargs):
         super(PostFilter, self).__init__(*args, **kwargs)

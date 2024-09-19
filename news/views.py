@@ -38,6 +38,7 @@ def upgrade_me(request):
 def subscribe_me(request, pk):
     user = request.user
     category = Category.objects.get(pk=pk)
+    print(category)
     category.subscribers.add(user)
 #
 #     message = "Вы подписались на рссылку новостей категории "
@@ -89,9 +90,8 @@ class PostsList(ListView):
 
 class PostDetail(DetailView, FormMixin):
 
-    # Модель всё та же, но мы хотим получать информацию по отдельному товару
+
     model = Post
-    # Используем другой шаблон — news.html
     template_name = 'news.html'
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news'
@@ -103,11 +103,14 @@ class PostDetail(DetailView, FormMixin):
         context['title'] = f"{context['news'].article}"
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
         # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
-        context['cat_selected'] = context['news'].category.get()
+        context['cats_selected'] = context['news'].category.all()
+        context['cat_selected'] = context['news'].category.all()[0]
+
+
 
         return context
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, **kwargs):
         form = self.get_form()
         if form.is_valid():
             #messages.success(request, 'Комментарий добавлен.')
@@ -130,7 +133,6 @@ class PostCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     # Указываем нашу разработанную форму
     form_class = PostForm
-    model = Post
     template_name = 'news_edit.html'
 
     def get_context_data(self, **kwargs):
@@ -249,6 +251,5 @@ class CategoryList(ListView):
         context['cat_selected'] = category_get
         context['news_count'] = f'Количество статей в категории {category_get}: {self.filterset.qs.count()}'
         context['cat_subscriber'] = Category.objects.filter(subscribers__pk=self.request.user.id)
-        # context['is_author'] = self.request.user.groups.filter(name='authors').exists()
 
         return context

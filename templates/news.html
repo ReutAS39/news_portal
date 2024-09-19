@@ -13,11 +13,16 @@
             <span class="meta__item meta__item_first-line">
 {{ news.time_in|date:'d M Y' }}
             </span>
+
+{% for c in cats_selected %}
             <span class="meta__item">
-{{ cat_selected }}
+{{ c }}
+
             </span>
+            {% endfor %}
             <span class="meta__item">
-{% if request.user.username and cat_selected not in cat_subscriber  %}
+
+{% if request.user.username and cat_selected not in cat_subscriber %}
              <a class="btn-subscribe" href="/news/subscribe/{{cat_selected.id}}">Подписаться!</a>
 {% endif%}
             </span>

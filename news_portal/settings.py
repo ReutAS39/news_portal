@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from environs import Env
+
+env = Env()  # Создаем экземпляр класса Env
+env.read_env()  # Методом read_env() читаем файл .env и загружаем из него переменные в окружение
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-153e#rv(hdos*5xq^-&vq+fy6lxm)k#o40-+^b!t!rhzuu-2x2'
+SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-153e#rv(hdos*5xq^-&vq+fy6lxm)k#o40-+^b!t!rhzuu-2x2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -172,13 +177,13 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_FORMS = {'signup': 'news.forms.BasicSignupForm'}
 
-EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
-EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = 'CamcoHKappacko'  # всё то что идёт до собаки
-EMAIL_HOST_PASSWORD = ''  # пароль от почты
-EMAIL_USE_SSL = True
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
 
-DEFAULT_FROM_EMAIL = 'CamcoHKappacko@yandex.ru'
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 # формат даты, которую будет воспринимать наш задачник (вспоминаем модуль по фильтрам)
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
